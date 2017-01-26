@@ -6,22 +6,25 @@ var root = path.join(__dirname, '..')
 
 var execute = require('./execute')({
   BIN: path.join(root, 'node_modules', '.bin'),
-  JS_OUTPUT: path.join(root, '__js_out.js'),
-  JS_INPUT: path.join(root, '__js_in.js')
+  JS_INPUT: path.join(root, 'src', 'index.js'),
+  JS_OUTPUT: path.join(root, 'dist', 'bundle.js')
 })
 
 var formattedOutput = require('./formatted_output')
 
 function run(task) {
+  formattedOutput.start({ taskname: task })
   return execute(task)
     .then(formattedOutput.success)
     .catch(formattedOutput.fail)
 }
 
 var tasks = {
-  browserify() {
+  js() {
     run('browserify')
-      .then(_ => run('lorem'))
+  },
+  watch_js() {
+    run('watchify')
   }
 }
 

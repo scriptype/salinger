@@ -10,22 +10,16 @@ function execute(env, filename) {
     var file = path.join(__dirname, 'tasks', `${filename}.sh`)
     var command = 'sh ' + file
     var ps = cp.exec(command, { env })
-    var stdout = ''
     var stderr = ''
 
-    ps.stdout.on('data', data => {
-      stdout += data
-    })
-
-    ps.stderr.on('data', data => {
-      stderr += data
-    })
+    ps.stdout.pipe(process.stdout)
+    ps.stderr.pipe(process.stderr)
+    ps.stderr.on('data', data => { stderr += data })
 
     ps.on('close', code => {
       if (code == 0) {
         resolve({
-          taskname: filename,
-          stdout
+          taskname: filename
         })
 
       } else {

@@ -1,15 +1,19 @@
 var chalk = require('chalk')
 var boldRed = chalk.bold.red
 var boldGreen = chalk.bold.green
+var boldCyan = chalk.bold.cyan
 
 module.exports = {
-  success({ taskname, stdout }) {
-    var footer = '√ ' + taskname
-    console.log(stdout, boldGreen(footer))
+  start({ taskname }) {
+    console.log(boldCyan('-> starting ' + taskname))
+  },
+
+  success({ taskname }) {
+    console.log(boldGreen('√ ' + taskname))
   },
 
   fail({ taskname, code, stderr }) {
     var header = 'x ' + taskname + ' exited with: ' + code
-    console.error(boldRed(header), 'stderr:', stderr)
+    console.error(boldRed(header), stderr)
   }
 }
