@@ -3,6 +3,19 @@ var path = require('path')
 var CommonEnv = require('../env')
 var formattedOutput = require('./formatted_output')
 
+var scripts = [
+  {
+    ext: 'sh',
+    cmd: 'sh',
+    error: /No such file or directory/i
+  },
+  {
+    ext: 'js',
+    cmd: 'node',
+    error: /Cannot find module/i
+  }
+]
+
 module.exports = function run(taskname, SpecialEnv) {
   formattedOutput.start({ taskname })
 
@@ -13,10 +26,11 @@ module.exports = function run(taskname, SpecialEnv) {
     .catch(formattedOutput.fail)
 }
 
-function execute(taskname, env) {
+function execute(taskname, env, scriptIndex = 0) {
   return new Promise((resolve, reject) => {
-    var file = path.join(__dirname, '..', 'tasks', `${taskname}.sh`)
-    var command = 'sh ' + file
+    var script = scripts[scriptIndex]
+    var file = path.join(__dirname, '..', 'tasks', `${taskname}.${script.ext}`)
+    var command = script.cmd + ' '+ file
     var ps = cp.exec(command, { env })
     var stderr = ''
 
@@ -27,6 +41,9 @@ function execute(taskname, env) {
     ps.on('close', code => {
       if (code == 0) {
         resolve({ taskname })
+
+      } else if (script.error.test(stderr) && scripts.length > scriptIndex + 1) {
+        resolve(execute(taskname, env, scriptIndex + 1))
 
       } else {
         reject({
