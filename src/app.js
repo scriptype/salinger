@@ -1,1 +1,0 @@
-console.error("Error: Cannot find module '/Users/feyza/code/sh-task-wrapper/src/scripts/app.js' from '/Users/feyza/code/sh-task-wrapper'");
