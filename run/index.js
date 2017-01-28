@@ -1,10 +1,10 @@
 var tasks = require('./tasks')
 
-var [ command, ...restArguments ] = process.argv.slice(2)
+var [ task, ...restArguments ] = process.argv.slice(2)
 
-if (command in tasks) {
-  tasks[command](...restArguments)
+if (task in tasks) {
+  tasks[task](...restArguments)
 } else {
-  console.error(`The task ${command} doesn't exist.`)
+  console.error(`The task ${task} doesn't exist.`)
   process.exit(1)
 }
