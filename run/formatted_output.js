@@ -5,7 +5,7 @@ var boldCyan = chalk.bold.cyan
 
 module.exports = {
   start({ taskname }) {
-    console.log(boldCyan('-> starting ' + taskname))
+    console.log(boldCyan('-> ' + taskname))
   },
 
   success({ taskname }) {

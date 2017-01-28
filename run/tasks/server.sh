@@ -1,0 +1,1 @@
+node $SERVER prod
