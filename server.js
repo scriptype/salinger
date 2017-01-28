@@ -1,12 +1,9 @@
 var path = require('path')
 var express = require('express')
-
-var args = process.argv.slice(2)
-var env = args[0]
-
 var app = express()
 
-app.use(express.static(path.resolve(env === 'dev' ? '.' : 'dist')))
+var staticfiles = process.argv[2] === 'dev' ? '.' : 'dist'
+app.use(express.static(path.resolve(staticfiles)))
 
 app.get('/', (req, res, next) => {
   res.sendFile(path.resolve('dist/index.html'))
