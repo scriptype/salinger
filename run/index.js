@@ -6,7 +6,7 @@ var root = path.join(__dirname, '..')
 
 var execute = require('./execute')({
   BIN: path.join(root, 'node_modules', '.bin'),
-  JS_INPUT: path.join(root, 'src', 'index.js'),
+  JS_INPUT: path.join(root, 'src', 'app.js'),
   JS_OUTPUT: path.join(root, 'dist', 'bundle.js')
 })
 
