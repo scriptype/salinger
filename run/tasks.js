@@ -5,7 +5,7 @@ module.exports = {
   start() {
     run('clean').then(_ => {
       run('copy_static')
-      run('html')
+      run('handlebars', { IS_DEV: 1 })
       run('browserify').then(_ => {
         run('watchify')
         run('livereload')
@@ -17,7 +17,8 @@ module.exports = {
   release() {
     run('clean').then(_ => {
       run('copy_static')
-      run('post_html')
+      run('handlebars', { IS_DEV: 0 })
+        .then(_ => run('post_html'))
       run('post_css')
       run('browserify')
         .then(_ => run('uglify'))
@@ -45,8 +46,8 @@ module.exports = {
     run('uglify')
   },
 
-  html() {
-    run('html')
+  handlebars(IS_DEV) {
+    run('handlebars', { IS_DEV })
   },
 
   post_html() {
@@ -55,14 +56,6 @@ module.exports = {
 
   post_css() {
     run('post_css')
-  },
-
-  replace_path(SCRIPT_FILE, STYLE_FILE, LIVE_RELOAD) {
-    run('replace_path', {
-      SCRIPT_FILE,
-      STYLE_FILE,
-      LIVE_RELOAD
-    })
   },
 
   clean() {

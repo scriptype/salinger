@@ -1,8 +1,3 @@
-node run replace_path \
-  $PROD_JS_NAME \
-  $PROD_CSS_NAME \
-  'false'
-
 node $BIN/html-minifier \
   --collapse-whitespace \
   --remove-attribute-quotes \
