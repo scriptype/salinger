@@ -1,6 +1,5 @@
 var path = require('path')
-var command = process.argv[2]
-var restArguments = process.argv.slice(2)
+var [ command, ...restArguments ] = process.argv.slice(2)
 
 var root = path.join(__dirname, '..')
 
