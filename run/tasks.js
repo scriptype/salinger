@@ -1,5 +1,5 @@
 var path = require('path')
-var run = require('./run')
+var run = require('./lib/run')
 
 module.exports = {
   start() {

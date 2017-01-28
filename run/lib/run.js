@@ -1,6 +1,6 @@
 var cp = require('child_process')
 var path = require('path')
-var CommonEnv = require('./env')
+var CommonEnv = require('../env')
 var formattedOutput = require('./formatted_output')
 
 module.exports = function run(taskname, SpecialEnv) {
@@ -15,7 +15,7 @@ module.exports = function run(taskname, SpecialEnv) {
 
 function execute(taskname, env) {
   return new Promise((resolve, reject) => {
-    var file = path.join(__dirname, 'tasks', `${taskname}.sh`)
+    var file = path.join(__dirname, '..', 'tasks', `${taskname}.sh`)
     var command = 'sh ' + file
     var ps = cp.exec(command, { env })
     var stderr = ''
