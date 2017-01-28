@@ -25,6 +25,14 @@ module.exports = {
     })
   },
 
+  server() {
+    run('server')
+  },
+
+  nodemon() {
+    run('nodemon')
+  },
+
   js() {
     run('browserify')
   },
@@ -55,5 +63,9 @@ module.exports = {
       STYLE_FILE,
       LIVE_RELOAD
     })
+  },
+
+  clean() {
+    run('clean')
   }
 }

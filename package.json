@@ -24,6 +24,9 @@
   "scripts": {
     "start": "node run start",
     "release": "node run release",
+    "clean": "node run clean",
+    "server": "node run server",
+    "nodemon": "node run nodemon",
     "html": "node run html",
     "js": "node run js",
     "watchjs": "node run watch_js",
