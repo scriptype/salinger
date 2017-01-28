@@ -27,7 +27,7 @@
     "clean": "node run clean",
     "server": "node run server",
     "nodemon": "node run nodemon",
-    "html": "node run html",
+    "handlebars": "node run handlebars",
     "js": "node run js",
     "watchjs": "node run watch_js",
     "post_html": "node run post_html",
