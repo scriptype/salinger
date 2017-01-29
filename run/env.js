@@ -31,7 +31,6 @@ module.exports = {
   BIN,
   SRC,
   DIST,
-  RUN,
 
   STATIC_NAME,
 
