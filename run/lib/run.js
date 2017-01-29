@@ -63,7 +63,7 @@ function execute(taskname, env) {
     }).catch(e => reject({
       taskname,
       code: 1,
-      stderr: e.notFound ? `Task ${taskname} couldn't found.` : e
+      stderr: e.notFound ? `Couldn't find the task "${taskname}".` : e
     }))
   })
 }
