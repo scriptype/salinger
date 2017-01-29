@@ -12,6 +12,7 @@
     "browserify": "^14.0.0",
     "cssnano-cli": "^1.0.5",
     "express": "^4.14.0",
+    "fs-extra": "^2.0.0",
     "handlebars": "^4.0.6",
     "html-minifier": "^3.3.0",
     "livereload": "^0.6.0",
@@ -19,6 +20,7 @@
     "postcss-cli": "^2.6.0",
     "postcss-import": "^9.1.0",
     "uglifyjs": "^2.4.10",
+    "watch": "^1.0.1",
     "watchify": "^3.9.0"
   },
   "scripts": {
@@ -29,7 +31,8 @@
     "nodemon": "node run nodemon",
     "handlebars": "node run handlebars",
     "js": "node run js",
-    "watchjs": "node run watch_js",
+    "watch_js": "node run watch_js",
+    "watch_static": "node run watch_static",
     "post_html": "node run post_html",
     "post_js": "node run post_js",
     "post_css": "node run post_css"

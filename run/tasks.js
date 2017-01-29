@@ -5,6 +5,7 @@ module.exports = {
   start() {
     run('clean').then(_ => {
       run('copy_static')
+      run('watch_static')
       run('handlebars', { IS_DEV: 1 })
       run('browserify').then(_ => {
         run('watchify')
