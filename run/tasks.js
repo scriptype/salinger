@@ -55,6 +55,10 @@ module.exports = {
     run('post_css')
   },
 
+  watch_static() {
+    run('watch_static')
+  },
+
   clean() {
     run('clean')
   }
