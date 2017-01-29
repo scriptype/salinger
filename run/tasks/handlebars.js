@@ -2,9 +2,12 @@ var fs = require('fs')
 var Handlebars = require('handlebars')
 
 var {
-  HTML_INPUT, HTML_OUTPUT,
-  DEV_JS_NAME, DEV_CSS_NAME,
-  PROD_JS_NAME, PROD_CSS_NAME,
+  HTML_INPUT,
+  HTML_OUTPUT,
+  JS_FULL_NAME,
+  JS_MIN_NAME,
+  CSS_FULL_RUNTIME,
+  CSS_MIN_RUNTIME,
   IS_DEV
 } = process.env
 
@@ -12,8 +15,8 @@ var html = fs.readFileSync(HTML_INPUT, 'utf-8')
 var template = Handlebars.compile(html)
 
 var output = template({
-  SCRIPT_FILE: IS_DEV == 1 ? DEV_JS_NAME : PROD_JS_NAME,
-  STYLE_FILE: IS_DEV == 1 ? DEV_CSS_NAME : PROD_CSS_NAME,
+  SCRIPT_FILE: IS_DEV == 1 ? JS_FULL_NAME : JS_MIN_NAME,
+  STYLE_FILE: IS_DEV == 1 ? CSS_FULL_RUNTIME : CSS_MIN_RUNTIME,
   LIVE_RELOAD: IS_DEV == 1
 })
 

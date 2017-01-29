@@ -3,7 +3,7 @@ node $BIN/postcss \
   --use postcss-import \
   --local-plugins \
   --output $DIST/tmp.style.css \
-  $CSS_INPUT
+  $CSS_INPUT_PATH
 
-node $BIN/cssnano $DIST/tmp.style.css $CSS_OUTPUT_MIN
+node $BIN/cssnano $DIST/tmp.style.css $CSS_MIN_PATH
 rm $DIST/tmp.style.css
