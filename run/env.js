@@ -5,7 +5,6 @@ var root = path.join(__dirname, '..')
 var BIN = path.join(root, 'node_modules', '.bin')
 var SRC = path.join(root, 'src')
 var DIST = path.join(root, 'dist')
-var RUN = path.join(root, 'run')
 
 var SERVER = path.join(root, 'server.js')
 
