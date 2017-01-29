@@ -7,6 +7,8 @@ var SRC = path.join(root, 'src')
 var DIST = path.join(root, 'dist')
 var RUN = path.join(root, 'run')
 
+var STATIC_NAME = 'static'
+
 var SERVER = path.join(root, 'server.js')
 
 var HTML_INPUT = path.join(SRC, 'index.html')
@@ -34,16 +36,15 @@ module.exports = {
   DIST,
   RUN,
 
+  STATIC_NAME,
+
   SERVER,
-
-  DEV_JS_NAME,
-  DEV_CSS_NAME,
-
-  PROD_JS_NAME,
-  PROD_CSS_NAME,
 
   HTML_INPUT,
   HTML_OUTPUT,
+
+  PROD_JS_NAME,
+  PROD_CSS_NAME,
 
   JS_INPUT_DIR,
   JS_INPUT,
@@ -53,5 +54,8 @@ module.exports = {
   CSS_INPUT_DIR,
   CSS_INPUT,
   CSS_OUTPUT_MIN_DIR,
-  CSS_OUTPUT_MIN
+  CSS_OUTPUT_MIN,
+
+  DEV_JS_NAME,
+  DEV_CSS_NAME
 }

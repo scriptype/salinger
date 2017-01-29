@@ -1,2 +1,2 @@
-mkdir -p $DIST/static
-cp -r $SRC/static/ $DIST/static
+mkdir -p $DIST/$STATIC_NAME
+cp -r $SRC/$STATIC_NAME/ $DIST/$STATIC_NAME
