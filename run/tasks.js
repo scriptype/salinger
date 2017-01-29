@@ -10,7 +10,7 @@ module.exports = {
       run('browserify').then(_ => {
         run('watchify')
         run('livereload')
-        run('nodemon')
+        run('http-server')
       })
     })
   },
@@ -23,16 +23,12 @@ module.exports = {
       run('post_css')
       run('browserify')
         .then(_ => run('uglify'))
-        .then(_ => run('server'))
+        .then(_ => run('http-server'))
     })
   },
 
   server() {
-    run('server')
-  },
-
-  nodemon() {
-    run('nodemon')
+    run('http-server')
   },
 
   js() {
