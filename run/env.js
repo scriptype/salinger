@@ -32,10 +32,6 @@ module.exports = {
   SRC,
   DIST,
 
-  STATIC_NAME,
-
-  SERVER,
-
   HTML_INPUT,
   HTML_OUTPUT,
 
@@ -44,6 +40,8 @@ module.exports = {
   JS_INPUT_PATH,
   JS_OUTPUT_PATH,
   JS_MIN_PATH,
+
+  STATIC_NAME,
 
   CSS_FULL_NAME,
   CSS_MIN_NAME,
