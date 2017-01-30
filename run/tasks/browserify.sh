@@ -1,4 +1,4 @@
-node $BIN/browserify \
+browserify \
   --delay=100 \
   --verbose \
   --transform [ babelify --presets [ es2015 react ] ] \

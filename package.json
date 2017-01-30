@@ -26,11 +26,13 @@
     "start": "node run start",
     "release": "node run release",
     "clean": "node run clean",
+    "kill": "node run kill",
     "server": "node run server",
     "handlebars": "node run handlebars",
     "js": "node run js",
     "watch_js": "node run watch_js",
     "watch_static": "node run watch_static",
+    "copy_static": "node run copy_static",
     "post_html": "node run post_html",
     "post_js": "node run post_js",
     "post_css": "node run post_css"

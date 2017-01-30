@@ -1,4 +1,4 @@
-node $BIN/uglifyjs $JS_OUTPUT_PATH \
+uglifyjs $JS_OUTPUT_PATH \
   --mangle \
   --compress \
   --output $JS_MIN_PATH

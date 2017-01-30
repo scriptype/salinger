@@ -59,7 +59,15 @@ module.exports = {
     run('watch_static')
   },
 
+  copy_static() {
+    run('copy_static')
+  },
+
   clean() {
     run('clean')
+  },
+
+  kill() {
+    run('kill')
   }
 }

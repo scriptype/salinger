@@ -1,4 +1,4 @@
-node $BIN/html-minifier \
+html-minifier \
   --collapse-whitespace \
   --remove-attribute-quotes \
   --remove-comments \

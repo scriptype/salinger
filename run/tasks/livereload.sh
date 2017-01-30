@@ -1,1 +1,1 @@
-node $BIN/livereload $DIST
+livereload $DIST

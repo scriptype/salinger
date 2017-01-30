@@ -16,10 +16,12 @@ const JS_OUTPUT_PATH = path.join(DIST, JS_FULL_NAME)
 const JS_MIN_PATH = path.join(DIST, JS_MIN_NAME)
 
 const STATIC_NAME = 'static'
+const STATIC_SRC = path.join(SRC, STATIC_NAME)
+const STATIC_DIST = path.join(DIST, STATIC_NAME)
 
 const CSS_FULL_NAME = 'style.css'
 const CSS_MIN_NAME = 'style.min.css'
-const CSS_DIR = path.join(DIST, STATIC_NAME, 'stylesheets')
+const CSS_DIR = path.join(STATIC_DIST, 'stylesheets')
 const CSS_INPUT_PATH = path.join(CSS_DIR, CSS_FULL_NAME)
 const CSS_MIN_PATH = path.join(CSS_DIR, CSS_MIN_NAME)
 const CSS_FULL_RUNTIME = path.relative(DIST, CSS_INPUT_PATH)
@@ -40,6 +42,8 @@ module.exports = {
   JS_MIN_PATH,
 
   STATIC_NAME,
+  STATIC_SRC,
+  STATIC_DIST,
 
   CSS_FULL_NAME,
   CSS_MIN_NAME,
