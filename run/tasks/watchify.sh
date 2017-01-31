@@ -1,3 +1,4 @@
+mkdir -p $DIST
 watchify \
   --delay=100 \
   --verbose \

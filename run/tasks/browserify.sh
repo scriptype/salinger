@@ -1,3 +1,4 @@
+mkdir -p $DIST
 browserify \
   --delay=100 \
   --verbose \

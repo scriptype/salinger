@@ -1,7 +1,9 @@
+var fse = require('fs-extra')
 var fs = require('fs')
 var Handlebars = require('handlebars')
 
 var {
+  DIST,
   HTML_INPUT,
   HTML_OUTPUT,
   JS_FULL_NAME,
@@ -20,4 +22,5 @@ var output = template({
   LIVE_RELOAD: IS_DEV == 1
 })
 
+fse.ensureDirSync(DIST)
 fs.writeFileSync(HTML_OUTPUT, output)
