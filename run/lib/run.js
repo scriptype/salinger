@@ -4,6 +4,15 @@ var path = require('path')
 var CommonEnv = require('../env')
 var formattedOutput = require('./formatted_output')
 
+var scripts = [
+  { ext: 'sh', cmd: 'sh' },
+  { ext: 'js', cmd: 'node' },
+  { ext: 'py', cmd: 'python' },
+  { ext: 'rb', cmd: 'ruby' },
+  { ext: 'pl', cmd: 'perl' },
+  { ext: 'lua', cmd: 'lua' }
+]
+
 module.exports = function run(taskname, SpecialEnv) {
   formattedOutput.start({ taskname })
 
@@ -14,11 +23,6 @@ module.exports = function run(taskname, SpecialEnv) {
     .then(formattedOutput.success)
     .catch(formattedOutput.fail)
 }
-
-var scripts = [
-  { ext: 'sh', cmd: 'sh' },
-  { ext: 'js', cmd: 'node' }
-]
 
 function findScript(_path, scriptIndex = 0) {
   return new Promise((resolve, reject) => {
