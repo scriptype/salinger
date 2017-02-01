@@ -1,8 +1,8 @@
-# sh-task-wrapper
+# Salinger
 WIP
 
 ## Integration
 
 ```sh
-curl https://raw.githubusercontent.com/scriptype/sh-task-wrapper/master/integration.sh | sh
+curl https://raw.githubusercontent.com/scriptype/salinger/master/integration.sh | sh
 ```
