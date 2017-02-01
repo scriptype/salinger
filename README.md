@@ -1,6 +1,5 @@
 # Salinger
 ![Salinger](https://github.com/scriptype/salinger/blob/master/salinger.png?raw=true)
-WIP
 
 ## Integration
 
