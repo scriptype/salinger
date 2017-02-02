@@ -1,9 +1,144 @@
 ![Salinger](https://github.com/scriptype/salinger/blob/master/salinger.png?raw=true)
 
+> Ecosystem-free and flexible task runner that goes well with npm scripts.
+
 ## Contents
 
+- [Motivation](#motivation)
+- [How it works](#how-it-works)
 - [Integration](#integration)
 - [Credits](#credits)
+
+## Motivation
+
+Npm run scripts are great, but after spending some time with them, you notice that things are constantly getting messier. Wish we had been provided some freedom and structure for our run scripts, to write them with full enjoyment. Here are some pain points:
+ - It doesn't feel great when you have 15+ lines of CLI code, each 100+ characters in your `package.json`.
+ - Sometimes you feel like using the programmatic API for a task. Well, you can't do that without:
+   - a) Writing down the nodejs code in the cli fashion, with ugly backslashes and stuff
+   - b) Creating a separate file for the script and referencing it from the package.json, which breaks the integrity of script definitions. Now your code looks like unmaintainable.
+ - A json file is not the most comfortable place to write scripts in it.
+
+Salinger provides you a well structured environment to organize your scripts. You have multiple places to inject variables to the scripts, whichever suits your needs. Every script lives in its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`).
+
+Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. You can use/write a Python script inside Salinger, if that's the easiest way to accomplish a task for you.
+
+Salinger is basically a folder structure boilerplate with an additional tiny library to wrap the scripts with Promise interface, so a solid orchestration is possible.
+
+Run binaries in node_modules directly with their name, just like you do in package.json
+
+
+## How it works
+
+ - Define the tasks in the `package.json`:
+ 
+   ```json
+  "scripts": {
+    "start": "node run start",
+    "foo": "node run foo",
+    "bar": "node run bar",
+    "js": "node run js"
+  }
+   ```
+   
+   Let's install a package to use in the js task. `npm i -D browserify`
+   
+   ```
+  "devDependencies": {
+    "browserify": "^14.0.0"
+  }
+   ```
+   
+ - As the scripts imply, there should be something named **run**. Well, that's actually the folder in which you manage your tasks. So, in your project root, there's a **run** directory. A folder tree then looks like this:
+ 
+   ```
+├── package.json
+├─┬ run/
+│ ├── index.js
+│ ├── env.js
+│ ├── tasks.js
+│ ├── lib/ (Salinger's own library code lives here)
+│ └─┬ tasks/
+│   ├── foo.sh
+│   ├── bar.js
+│   ├── bam.py
+│   └── browserify.sh
+   ```
+   
+   Note how we didn't provide an entry point to `bam.py` in the package.json. Your package, your decision.
+   
+ - **index.js** is checking whether the given command is handled in tasks. If so, calls it.
+   
+ - Inside **env.js**, define environment variables. They'll be available to all your scripts through `process.env`:
+ 
+   ```js
+  var path = require('path')
+
+  module.exports = {
+    HELLO: 'hello',
+    BYE: 'bye',
+    JS_IN: path.join(__dirname, '..', 'src', 'app.js'),     // Assuming you have this folder structure
+    JS_OUT: path.join(__dirname, '..', 'dist', 'bundle.js')
+  }
+   ```
+ 
+ - Inside **tasks.js** you are mapping commands coming from npm scripts to the actual tasks and orchestrating them however you like. For our example, tasks.js would be like:
+ 
+   ```js
+  var run = require('./lib/run')
+
+  module.exports = {
+    start() {
+      // just promise logic.
+      run('foo')
+        .then(_ => run('bam'))
+      run('bar')
+        .then(_ => run('browserify'))
+    },
+    
+    foo() {
+      run('foo', {
+        HOW_ABOUT_INJECTING_SOME_VARS_HERE: 'indeed'
+      })
+    },
+    
+    bar() {
+      run('bar')
+    },
+    
+    js() {
+      run('browserify')
+    }
+  }
+   ```
+   
+   No handler for bam. It's obviously a private script for `start`. Exported methods should reflect what you call them in package.json. It's up to your imagination what you do inside these methods, though. When you `run` a task, you are given a Promise interface to hook and chain it with other tasks. Every task accepts specific environment variables if you supply the second argument.
+   
+ - Finally, the scripts:
+ 
+   **run/tasks/foo.sh**
+   
+   ```sh
+  echo $HELLO
+   ```
+ 
+   **run/tasks/bar.js**
+   ```js
+  console.log(process.env.BYE)
+   ```
+ 
+   **run/tasks/bam.py**
+   ```py
+  import os
+  print(os.environ['HELLO'] + ' and ' + os.environ['BYE'])
+   ```
+ 
+   **run/tasks/browserify.sh**
+   ```sh
+  browserify \
+    --outfile $JS_OUT \
+    --debug \
+    $JS_IN
+   ```
 
 ## Integration
 
