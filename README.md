@@ -13,16 +13,16 @@
 
 Npm run scripts are great, but after spending some time with them, you notice that things are constantly getting messier. Wish we had been provided some freedom and structure for our run scripts, to write them with full enjoyment. Here are some pain points:
  - It doesn't feel great when you have 15+ lines of CLI code, each 100+ characters in your `package.json`.
- - Sometimes you feel like using the programmatic API for a task. Well, you can't do that without:
-   - a) Writing down the nodejs code in the cli fashion, with ugly backslashes and stuff
-   - b) Creating a separate file for the script and referencing it from the package.json, which breaks the integrity of script definitions. Now your code looks like unmaintainable.
- - A json file is not the most comfortable place to write scripts in it.
+ - Sometimes you feel like using the programmatic API for a task. Well, you can't do that in package without:
+   - a) Writing the js code in the cli style, with ugly backslashes
+   - b) Creating a separate file for the script and referencing it from the package.json, which breaks the integrity of script definitions. Now your code looks unmaintainable.
+ - A json file apparently is not the most comfortable place to write scripts in it.
 
-Salinger provides you a well structured environment to organize your scripts. You have multiple places to inject variables to the scripts, whichever suits your needs. Every script lives in its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`).
+Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
 
-Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. You can use/write a Python script inside Salinger, if that's the easiest way to accomplish a task for you.
+Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. You can use/write – for example – a Python script inside Salinger, if that's the easiest way to accomplish a task for you.
 
-Salinger is basically a folder structure boilerplate with an additional tiny library to wrap the scripts with Promise interface, so a solid orchestration is possible.
+Salinger is basically a folder structure boilerplate with an additional tiny library to wrap the scripts with Promise interface, so a solid orchestration is made possible.
 
 Run binaries in node_modules directly with their name, just like you do in package.json
 
@@ -35,7 +35,7 @@ Run binaries in node_modules directly with their name, just like you do in packa
   "scripts": {
     "start": "node run start",
     "foo": "node run foo",
-    "bar": "node run bar",
+    "bar": "node run bar lorem ipsum",
     "js": "node run js"
   }
    ```
@@ -48,7 +48,7 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
    
- - As the scripts imply, there should be something named **run**. Well, that's actually the folder in which you manage your tasks. So, in your project root, there's a **run** directory. A folder tree then looks like this:
+ - As the scripts imply, there should be something named **run**. Well, that's actually the folder in which we manage our tasks. So, in the project root, there's a **run** directory. The folder tree then looks like this:
  
    ```
 ├── package.json
@@ -101,8 +101,12 @@ Run binaries in node_modules directly with their name, just like you do in packa
       })
     },
     
-    bar() {
-      run('bar')
+    bar(lorem, ipsum) {
+      console.log('here are some arguments supplied from cli', lorem, ipsum)
+      run('bar', {
+        IS_LOREM: !!lorem,
+        IS_IPSUM: !!ipsum,
+      })
     },
     
     js() {
@@ -111,19 +115,24 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
    
-   No handler for bam. It's obviously a private script for `start`. Exported methods should reflect what you call them in package.json. It's up to your imagination what you do inside these methods, though. When you `run` a task, you are given a Promise interface to hook and chain it with other tasks. Every task accepts specific environment variables if you supply the second argument.
+   No handler for bam. It's obviously a private script for `start`. Exported methods should reflect what you call them in package.json. It's up to your imagination what you do inside these methods, though. When you `run` a task, you are given a Promise interface to hook and chain it with other tasks. The first argument of `run` is the filename of the script. The second parameter is optional and it defines task-specific environment variables.
    
  - Finally, the scripts:
  
    **run/tasks/foo.sh**
    
    ```sh
-  echo $HELLO
+  echo $HELLO $HOW_ABOUT_INJECTING_SOME_VARS_HERE
    ```
  
    **run/tasks/bar.js**
    ```js
-  console.log(process.env.BYE)
+  var {
+    BYE,
+    IS_LOREM,
+    IS_IPSUM
+  } = process.env
+  console.log(BYE, IS_LOREM, IS_IPSUM)
    ```
  
    **run/tasks/bam.py**
