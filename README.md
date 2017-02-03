@@ -16,7 +16,7 @@ Npm run scripts are great, but after spending some time with them, you notice th
  - Sometimes you feel like using the programmatic API for a task. Well, you can't do that in `package.json` without:
    - a) Writing the js code in one line, with full of backslashes, as a parameter to `node -e`
    - b) Creating a separate file for the script and referencing it from the npm script, which breaks the integrity of script definitions. Now your code looks unmaintainable.
- - A json file apparently is not the most comfortable place to write scripts in it.
+ - A json file is apparently not the most comfortable place to write whole script contents in it.
  - Use [Makefile](https://github.com/scriptype/Makefile-for-the-Front-End) to have more space, freedom and organization? It's all sweet until you think "[well, this task better be written with Node.js](https://github.com/scriptype/Makefile-for-the-Front-End/blob/master/Makefile#L112)", which takes you to the point _b)_ above. Also, the resources for learning will be mostly some old-style stuff that targets C audience.
 
 Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
