@@ -19,7 +19,7 @@ Npm run scripts are great, but after spending some time with them, you notice th
  - A json file is apparently not the most comfortable place to write whole script contents in it.
  - Use [Makefile](https://github.com/scriptype/Makefile-for-the-Front-End) to have more space, freedom and organization? It's all sweet until you think "[well, this task better be written with Node.js](https://github.com/scriptype/Makefile-for-the-Front-End/blob/master/Makefile#L112)", which takes you to the point _b)_ above. Also, the resources for learning will be mostly some old-style stuff that targets C audience.
 
-Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
+Salinger provides a well structured environment to organize the scripts. Every script has its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
 
 Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. There won't be a `salinger-uglify`.
 
