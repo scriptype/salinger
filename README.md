@@ -17,6 +17,7 @@ Npm run scripts are great, but after spending some time with them, you notice th
    - a) Writing the js code in one line, with full of backslashes, as a parameter to `node -e`
    - b) Creating a separate file for the script and referencing it from the npm script, which breaks the integrity of script definitions. Now your code looks unmaintainable.
  - A json file apparently is not the most comfortable place to write scripts in it.
+ - Use [Makefile](https://github.com/scriptype/Makefile-for-the-Front-End) to have more space, freedom and organization? It's all sweet until you think "[well, this task better be written with Node.js](https://github.com/scriptype/Makefile-for-the-Front-End/blob/master/Makefile#L112)", which takes you to the point _b)_ above. Also, the resources for learning will be mostly some old-style stuff that targets C audience.
 
 Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
 
@@ -40,7 +41,7 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
    
-   Let's install a package to use in the js task. `npm i -D browserify`
+   Let's `npm i -D browserify` to use in the js task.
    
    ```
   "devDependencies": {
@@ -48,7 +49,7 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
    
- - As the scripts imply, there should be something named **run**. Well, that's actually the folder in which we manage our tasks. So, in the project root, there's a **run** directory. The folder tree then looks like this:
+ - As the scripts imply, there should be something named **run**. Well, that's actually the folder in which we manage our tasks. So, in the project root, there's a **run** directory with some files in it. The folder tree then looks like this:
  
    ```
 ├── package.json
@@ -64,11 +65,11 @@ Run binaries in node_modules directly with their name, just like you do in packa
 │   └── browserify.sh
    ```
    
-   Note how we didn't provide an entry point to `bam.py` in the package.json. Your package, your decision.
+   Note that there isn't an exact mapping between npm scripts and the file names inside the `tasks/`. It's not needed, as we'll map them later. I intentionally did that to better illustrate the system.
    
- - **index.js** is checking whether the given command is handled in tasks. If so, calls it.
+ - [**index.js**](https://github.com/scriptype/salinger/blob/master/run/index.js) is checking whether the given command is handled in tasks. If so, calls it.
    
- - Inside **env.js**, define environment variables. They'll be available to all your scripts through `process.env`:
+ - Inside [**env.js**](https://github.com/scriptype/salinger/blob/master/run/env.js), define environment variables. They'll be available to all your scripts through `process.env`:
  
    ```js
   var path = require('path')
@@ -81,7 +82,7 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
  
- - Inside **tasks.js** you are mapping commands coming from npm scripts to the actual tasks and orchestrating them however you like. For our example, tasks.js would be like:
+ - Inside [**tasks.js**](https://github.com/scriptype/salinger/blob/master/run/tasks.js) you are mapping commands coming from npm scripts to the actual tasks and orchestrating them however you like. For our example, tasks.js would be like:
  
    ```js
   var run = require('./lib/run')
@@ -115,7 +116,11 @@ Run binaries in node_modules directly with their name, just like you do in packa
   }
    ```
    
-   No handler for bam. It's obviously a private script for `start`. Exported methods should reflect what you call them in package.json. It's up to your imagination what you do inside these methods, though. When you `run` a task, you are given a Promise interface to hook and chain it with other tasks. The first argument of `run` is the filename of the script. The second parameter is optional and it defines task-specific environment variables.
+     - No handler for bam. It's obviously a private script for `start`.
+     - Names of the exported methods should reflect what you call them in package.json. It's up to your imagination what you do inside these methods, though.
+     - The first argument of `run` is the filename of the script.
+     - The second parameter is optional and it defines task-specific environment variables. Every run call is able to carry its own environment variables, thanks to this second parameter.
+     - When you `run` a task, you are given a Promise interface to hook and chain it with other tasks.
    
  - Finally, the scripts:
  
