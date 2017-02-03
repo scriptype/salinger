@@ -21,7 +21,9 @@ Npm run scripts are great, but after spending some time with them, you notice th
 
 Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
 
-Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. You can use/write – for example – a Python script inside Salinger, if that's the easiest way to accomplish a task for you.
+Salinger has no ecosystem of plugins to adapt to. Use the core packages instead. There won't be a `salinger-uglify`.
+
+Tools that we use for various tasks can have a good CLI and a rather complex API (or vice versa). You should be writing the one you are most comfortable with. Salinger got your back there. You can even use/write – for example – a Python script inside Salinger, if that's the easiest way to accomplish a task for you. Not super useful for everyone, but why not support it while it's a _no-op_ for the library.
 
 Salinger is basically a folder structure boilerplate with an additional tiny library to wrap the scripts with Promise interface, so a solid orchestration is made possible.
 
