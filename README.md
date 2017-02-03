@@ -11,11 +11,11 @@
 
 ## Motivation
 
-Npm run scripts are great, but after spending some time with them, you notice that things are constantly getting messier. Wish we had been provided some freedom and structure for our run scripts, to write them with full enjoyment. Here are some pain points:
- - It doesn't feel great when you have 15+ lines of CLI code, each 100+ characters in your `package.json`.
- - Sometimes you feel like using the programmatic API for a task. Well, you can't do that in package without:
-   - a) Writing the js code in the cli style, with ugly backslashes
-   - b) Creating a separate file for the script and referencing it from the package.json, which breaks the integrity of script definitions. Now your code looks unmaintainable.
+Npm run scripts are great, but after spending some time with them, you notice that things are constantly getting messier. Wish we had more space and structure for our run scripts, to write them with full enjoyment. Here are some pain points:
+ - It doesn't feel great reading 15+ lines of CLI code, each 100+ characters in your `package.json`.
+ - Sometimes you feel like using the programmatic API for a task. Well, you can't do that in `package.json` without:
+   - a) Writing the js code in one line, with full of backslashes, as a parameter to `node -e`
+   - b) Creating a separate file for the script and referencing it from the npm script, which breaks the integrity of script definitions. Now your code looks unmaintainable.
  - A json file apparently is not the most comfortable place to write scripts in it.
 
 Salinger provides a well structured environment to organize the scripts. Every script have its own file. Scripts can be anything (currently: `sh`, `js`, `py`, `rb`, `pl`, `lua`). There are multiple intuitive ways to inject variables to the scripts, whichever you like.
