@@ -1,6 +1,6 @@
 {
   "name": "salinger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ecosystem-free and flexible task runner that goes well with npm scripts.",
   "main": "lib/index.js",
   "bin": {
@@ -11,7 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/scriptype/salinger-npm.git"
   },
-  "keywords": ["task runner", "npm scripts", "build automation"],
+  "keywords": [
+    "task runner",
+    "npm scripts",
+    "build automation"
+  ],
   "author": "scriptype (Mustafa Enes Ertarhanaci)",
   "license": "MIT",
   "bugs": {
