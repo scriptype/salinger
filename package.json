@@ -1,51 +1,25 @@
 {
-  "name": "salinger-integration",
-  "version": "1.0.0",
+  "name": "salinger",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "autoprefixer": "^6.7.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-react": "^6.22.0",
-    "babelify": "^7.3.0",
-    "browserify": "^14.0.0",
-    "cssnano-cli": "^1.0.5",
-    "fs-extra": "^2.0.0",
-    "handlebars": "^4.0.6",
-    "html-minifier": "^3.3.0",
-    "http-server": "^0.9.0",
-    "livereload": "^0.6.0",
-    "postcss-cli": "^2.6.0",
-    "postcss-import": "^9.1.0",
-    "uglifyjs": "^2.4.10",
-    "watch": "^1.0.1",
-    "watchify": "^3.9.0"
-  },
-  "scripts": {
-    "start": "node run start",
-    "release": "node run release",
-    "clean": "node run clean",
-    "kill": "node run kill",
-    "server": "node run server",
-    "handlebars": "node run handlebars",
-    "js": "node run js",
-    "watch_js": "node run watch_js",
-    "watch_static": "node run watch_static",
-    "copy_static": "node run copy_static",
-    "post_html": "node run post_html",
-    "post_js": "node run post_js",
-    "post_css": "node run post_css"
+  "main": "lib/index.js",
+  "bin": {
+    "salinger": "bin/index.js",
+    "sal": "bin/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scriptype/sh-task-wrapper.git"
+    "url": "git+https://github.com/scriptype/salinger-npm.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "scriptype (Mustafa Enes Ertarhanaci)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scriptype/sh-task-wrapper/issues"
+    "url": "https://github.com/scriptype/salinger-npm/issues"
   },
-  "homepage": "https://github.com/scriptype/sh-task-wrapper#readme"
+  "homepage": "https://github.com/scriptype/salinger-npm#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  },
+  "devDependencies": {}
 }
