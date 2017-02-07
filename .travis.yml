@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "7.5"
+  - "6.9.5"
+  - "5"
+  - "4.2"
+  - "4.0"
+  - "iojs"
+os:
+  - linux
+  - osx
+install:
+  - npm install
+cache:
+  directories:
+  - node_modules
+script: sh scripts/travis.sh
