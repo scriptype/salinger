@@ -1,5 +1,5 @@
-const IM_TESTING_EVERYDAY = 'testing rocks'
+const EVERYDAY_IM_TESTING = 'testing rocks'
 
 module.exports = {
-  IM_TESTING_EVERYDAY
+  EVERYDAY_IM_TESTING
 }

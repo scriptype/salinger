@@ -1,0 +1,1 @@
+echo $EVERYDAY_IM_TESTING
