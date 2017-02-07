@@ -12,3 +12,6 @@ node ../salinger/scripts/helpers/package_json_scripts \
   package.json \
   start "salinger start" \
   lorem "salinger lorem"
+
+npm start
+npm run lorem
