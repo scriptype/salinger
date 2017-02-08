@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scriptype/salinger-npm.git"
+    "url": "git+https://github.com/scriptype/salinger.git"
   },
   "keywords": [
     "task runner",
@@ -19,9 +19,9 @@
   "author": "scriptype (Mustafa Enes Ertarhanaci)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/scriptype/salinger-npm/issues"
+    "url": "https://github.com/scriptype/salinger/issues"
   },
-  "homepage": "https://github.com/scriptype/salinger-npm#readme",
+  "homepage": "https://github.com/scriptype/salinger#readme",
   "dependencies": {
     "chalk": "^1.1.3"
   },
