@@ -1,2 +1,6 @@
 scripts/
+.codeclimate.yml
+.eslintignore
+.eslintrc
 .travis.yml
+appveyor.yml
