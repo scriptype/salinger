@@ -1,15 +1,17 @@
-mkdir salinger-test
-cd salinger-test
+mkdir __test
+cd __test
 
-npm init -y
-npm i -D salinger
+npm init -y > $null
 
 cp ..\scripts\files\run . -recurse
 
 node ..\scripts\helpers\package_json_scripts `
   package.json `
-  start "salinger start" `
-  lorem "salinger lorem"
+  start "node ..\bin\index.js start" `
+  lorem "node ..\bin\index.js lorem"
 
 npm start
 npm run lorem
+
+cd ..
+rmdir __test

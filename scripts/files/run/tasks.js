@@ -1,4 +1,4 @@
-var run = require('salinger').run
+var run = require('../..').run
 
 module.exports = {
   start() {
