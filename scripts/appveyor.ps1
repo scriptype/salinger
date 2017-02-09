@@ -14,4 +14,4 @@ npm start
 npm run lorem
 
 cd ..
-rmdir __test
+rm -r __test
