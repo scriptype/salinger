@@ -9,5 +9,6 @@ test_script:
   - node --version
   - npm --version
   - ps: .\scripts\appveyor.ps1
+  - npm test
 
 build: off

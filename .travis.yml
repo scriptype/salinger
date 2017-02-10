@@ -7,7 +7,9 @@ os:
   - linux
 install:
   - npm install
-script: sh scripts/travis.sh
+script:
+  - sh scripts/travis.sh
+  - npm test
 cache:
   directories:
   - node_modules
