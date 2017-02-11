@@ -5,7 +5,7 @@ npm init -y > /dev/null
 
 cp -R ../scripts/files/run .
 
-node ../scripts/helpers/package_json_scripts \
+node ../scripts/helpers/packageJsonScripts \
   package.json \
   start "node ../bin/index.js start" \
   lorem "node ../bin/index.js lorem"

@@ -1,1 +1,1 @@
-require('./unit/find_script_type')
+require('./unit/findScriptType')

@@ -1,7 +1,7 @@
 var test = require('tape')
 var fs = require('fs')
-var supportedScriptTypes = require('../../lib/supported_script_types')
-var findScriptType = require('../../lib/find_script_type')
+var supportedScriptTypes = require('../../lib/supportedScriptTypes')
+var findScriptType = require('../../lib/findScriptType')
 
 test('findScriptType', t => {
   Promise
