@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 mkdir __test
 cd __test
 

@@ -4,10 +4,7 @@ var path = require('path')
 
 // Take prerequisite actions before requiring 'paths' and 'execute' modules
 var homePath = process.hrtime().join('-')
-
 process.env.SALINGER_HOME_PATH = homePath
-process.env.PATH += ':/usr/local/lib/node_modules/npm/bin/node-gyp-bin'
-process.env.NODE = '/usr/local/bin/node'
 
 var paths = require('../../lib/paths')
 var execute = require('../../lib/execute')
