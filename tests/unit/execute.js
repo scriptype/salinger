@@ -34,9 +34,9 @@ function executeTask(t, { shouldScriptFail = false } = {}) {
   return new Promise((resolve, reject) => {
     var taskName = process.hrtime().join('_')
 
-    var env = {
+    var env = Object.assign({}, process.env, {
       HELLO: `test environment variable value for ${taskName}`
-    }
+    })
 
     var errorThrownInScript = 'This error is thrown on purpose, nothing went wrong'
 

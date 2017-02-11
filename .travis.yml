@@ -9,7 +9,6 @@ install:
   - npm install
 script:
   - sh scripts/travis.sh
-  - npm test
   - npm run cover
 cache:
   directories:
