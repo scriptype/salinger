@@ -75,12 +75,7 @@ npm i -D salinger
    
    To setup this folder structure quickly, run this in the project root:
    ```sh
-   mkdir -p scripts/tasks
-   cd scripts/tasks
-   touch server.sh hello.js bye.py
-   cd ..
-   touch env.js tasks.js
-   cd ..
+   $(npm bin)/salinger-setup
    ```
    
  - Inside `env.js`, define environment variables:
