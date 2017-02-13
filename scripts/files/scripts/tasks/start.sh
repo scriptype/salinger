@@ -1,1 +1,0 @@
-echo 'start script yes'
