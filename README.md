@@ -75,7 +75,7 @@ npm i -D salinger
    
    To setup this folder structure quickly, run this in the project root:
    ```sh
-   $(npm bin)/salinger-setup
+   salinger_home=scripts $(npm bin)/salinger-setup
    ```
    
  - Inside `env.js`, define environment variables:
