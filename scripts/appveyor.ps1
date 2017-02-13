@@ -7,7 +7,7 @@ sh ..\bin\setup.sh
 
 node ..\scripts\helpers\packageJsonScripts `
   package.json `
-  hello "node ..\bin\index.js hello" `
+  hello "node ..\bin\index.js hello"
 
 echo "module.exports = {MY_VAR:'my-var'}" > scripts/env.js
 echo "var run=require('../..').run;exports.hello=()=>run('hello')" > scripts/tasks.js
