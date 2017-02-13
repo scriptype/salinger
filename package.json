@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "bin": {
     "salinger": "bin/index.js",
-    "sal": "bin/index.js"
+    "salinger-setup": "bin/setup.js"
   },
   "scripts": {
     "test": "tape tests | tap-spec",
