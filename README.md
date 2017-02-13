@@ -99,18 +99,15 @@ npm i -D salinger
     },
     
     helloWorld(hereComesMyCLIParameter) {
-      Promise
-        .all([
-          run('hello', {
+        run('hello', {
             HOW_ABOUT_INJECTING_SOME_VARS_HERE: hereComesMyCLIParameter
-          }),
-          run('bye', {
+          })
+          .then(_ => run('bye', {
             FOO: 'bar'
           })
-        ])
-        .then(_ => {
-          console.log('i do whatever i want with all these promises')
-        })
+          .then(_ => {
+            console.log('i do whatever i want with all these promises')
+          })
     }
   }
    ```
@@ -150,7 +147,8 @@ npm i -D salinger
  
    ```sh
    npm run helloWorld
-   # logs "bar" and "someParameter" with random order
+   # logs "someParameter"
+   # logs "bar"
    # logs "i do whatever i want with all these promises"
    ```
 
