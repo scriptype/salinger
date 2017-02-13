@@ -61,7 +61,7 @@ npm i -D salinger
    npm i -D http-server
    ```
    
- - Next, create a folder named `scripts` in the root directory of your project. We'll use this folder as the home directory for Salinger tasks. The folder contents should look like this:
+ - Next, you need a folder named `scripts` in the root directory of your project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
  
    ```
 ├─┬ scripts/
