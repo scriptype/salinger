@@ -3,7 +3,7 @@ cd __test
 
 npm init -y > /dev/null
 
-cp -R ../scripts/files/run .
+cp -R ../scripts/files/scripts .
 
 node ../scripts/helpers/packageJsonScripts \
   package.json \

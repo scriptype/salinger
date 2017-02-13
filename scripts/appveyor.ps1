@@ -3,7 +3,7 @@ cd __test
 
 npm init -y > $null
 
-cp ..\scripts\files\run . -recurse
+cp ..\scripts\files\scripts . -recurse
 
 node ..\scripts\helpers\packageJsonScripts `
   package.json `

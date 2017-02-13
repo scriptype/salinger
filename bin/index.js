@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var path = require('path')
 var configKey = 'npm_package_config_salinger_tasks'
-var homePath = path.resolve(process.cwd(), process.env[configKey] || 'run')
+var homePath = path.resolve(process.cwd(), process.env[configKey] || 'scripts')
 process.env.SALINGER_HOME_PATH = homePath
 
 var tasks = require(path.join(homePath, 'tasks'))
