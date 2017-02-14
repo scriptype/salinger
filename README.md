@@ -62,7 +62,7 @@ npm i -D salinger
    npm i -D http-server
    ```
    
- - Next, you need a folder named `scripts` in the root directory of your project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
+ - Next, we need a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
  
    ```
 ├─┬ scripts/
@@ -74,7 +74,7 @@ npm i -D salinger
 │   └── bye.py
    ```
    
-   To setup this folder structure with no effort, run this in the project root:
+   Run this in the project root to setup the above folder structure:
    
    ```sh
    $(npm bin)/salinger-setup
@@ -87,7 +87,7 @@ npm i -D salinger
    }
    ```
    
-   Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.
+   <sub>Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.</sub>
    
  - Inside `env.js`, define environment variables:
  
@@ -105,19 +105,19 @@ npm i -D salinger
 
   module.exports = {
     start() {
-      console.log('I can debug here')
       run('server')
     },
     
     helloWorld(hereComesMyCLIParameter) {
-        run('hello', {
-          HOW_ABOUT_INJECTING_SOME_VARS_HERE: hereComesMyCLIParameter
-        })
-        .then(_ => run('bye', {
+      run('hello')
+        .then(_ => run('world', {
           FOO: 'bar'
-        })
+        }))
+        .then(_ => run('bye', {
+          LOVELY_PARAMETER: hereComesMyCLIParameter
+        }))
         .then(_ => {
-          console.log('i do whatever i want with all these promises')
+          console.log('All done!')
         })
     }
   }
@@ -136,37 +136,47 @@ npm i -D salinger
  
    **tasks/hello.js**
    ```js
-  console.log(process.env.HOW_ABOUT_INJECTING_SOME_VARS_HERE)
+  console.log('hello')
+   ```
+ 
+   **tasks/world.js**
+   ```js
+  console.log(process.env.FOO)
    ```
  
    **tasks/bye.py**
    ```py
   import os
-  print(os.environ['FOO'])
+  print(os.environ['LOVELY_PARAMETER'])
    ```
+   
    
  - Finally, let's check what we got:
  
    ```sh
    npm start
-   # logs "i can debug here"
    # starts an http server at 8081
    ```
  
    ```sh
    npm run helloWorld
-   # logs "someParameter"
+   # logs "hello"
    # logs "bar"
-   # logs "i do whatever i want with all these promises"
+   # logs "someParameter"
+   # logs "All done!"
    ```
 
 ## Windows support
 
-Salinger tries to be as friendly as possible with Windows, but `cmd.exe` isn't supported. Anything you do with Salinger should work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
+Salinger may or may not work on `cmd.exe`. Consider using one of these:
 
-I didn't try [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about). Theoretically, everything should be fine there.
+ - [Git Bash](https://git-scm.com/downloads)
+ - [Cygwin](https://cygwin.com/install.html)
+ - [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about)
+ 
+...and everything should be fine.
 
-If you encounter a problem when using Salinger on Windows, please check out the [Windows Issues](https://github.com/scriptype/salinger/labels/windows).
+If you encounter a problem with Salinger on Windows, please see the [Windows Issues](https://github.com/scriptype/salinger/labels/windows) and open one if necessary.
 
 ## Credits
 
