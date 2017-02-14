@@ -16,7 +16,7 @@
 ## Motivation
 
 Npm run scripts are a great way to organize the build scripts of a Node.js project, but after spending some time with them, chances are the `package.json` will end up looking like a mess. Wish we had more space and structure for our run scripts, to write them with full enjoyment. Having to write long-ish shell scripts as one-liners doesn't feel particularly great (or, is it just me?). Here are some common issues with writing npm scripts:
- - It's unpleasant reading 10+ consecutive lines of CLI code, each 100+ characters in your `package.json`.
+ - It's unpleasant reading several long lines of CLI code in the `package.json`. Not eye candy, at best.
  - Sometimes you _may_ want to use the programmatic API of a tool for a given task. Well, you can't do that in `package.json` without:
    - a) Writing the js code in one line, with full of backslashes, as a parameter to `node -e`
    - b) Creating a separate file for the script and referencing it from the related npm script, which breaks the integrity of script definitions. Some scripts live in their own module while others are directly written inside the `package.json`.
