@@ -32,10 +32,10 @@ Npm run scripts are a great way to organize the build scripts of a Node.js proje
  - Tools we use can have a good CLI and a rather complex API (or vice versa). With Salinger, we can use whichever we want for a task.
  - Every script has its own file.
  - `scripts` field in the `package.json` is still used, but only as entry points for Salinger tasks. They are very short.
- - Promise wrappers around the actual script codes, so it's trivial to implement chaining mechanisms between the tasks.
+ - Scripts are run inside promise wrappers, so it's trivial to implement chaining mechanisms between the them.
  - No magic, instant grasp of the full system, almost non-existent learning curve.
  - In a script, `node_module`s are directly callable with their names, as in package.json.
- - Not extendable, nor pluggable or anything like that. If you want to have a Salinger behaving differently, fork it and implement that behavior yourself (the code is so small, I'm planning to annotate the source). If you think it would be beneficial for everyone, please open a PR and let's discuss it.
+ - Concrete library. No moving parts other than a home directory config.
 
 ## Install
 
@@ -74,9 +74,9 @@ npm i -D salinger
 │   └── bye.py
    ```
    
-   To setup this folder structure quickly, run this in the project root:
+   To setup this folder structure with no effort, run this in the project root:
    
-   (**Windows note: I couldn't manage to get this running on Git Bash or Cygwin, [any help'd be appreciated](https://github.com/scriptype/salinger/issues/2)**)
+   (**[This doesn't work on Windows](https://github.com/scriptype/salinger/issues/2)**)
    
    ```sh
    salinger_home="scripts" $(npm bin)/salinger-setup
@@ -107,20 +107,20 @@ npm i -D salinger
 
   module.exports = {
     start() {
-      console.log('i can debug here')
+      console.log('I can debug here')
       run('server')
     },
     
     helloWorld(hereComesMyCLIParameter) {
         run('hello', {
-            HOW_ABOUT_INJECTING_SOME_VARS_HERE: hereComesMyCLIParameter
-          })
-          .then(_ => run('bye', {
-            FOO: 'bar'
-          })
-          .then(_ => {
-            console.log('i do whatever i want with all these promises')
-          })
+          HOW_ABOUT_INJECTING_SOME_VARS_HERE: hereComesMyCLIParameter
+        })
+        .then(_ => run('bye', {
+          FOO: 'bar'
+        })
+        .then(_ => {
+          console.log('i do whatever i want with all these promises')
+        })
     }
   }
    ```
@@ -138,10 +138,7 @@ npm i -D salinger
  
    **tasks/hello.js**
    ```js
-  var {
-    HOW_ABOUT_INJECTING_SOME_VARS_HERE
-  } = process.env
-  console.log(HOW_ABOUT_INJECTING_SOME_VARS_HERE)
+  console.log(process.env.HOW_ABOUT_INJECTING_SOME_VARS_HERE)
    ```
  
    **tasks/bye.py**
@@ -167,11 +164,11 @@ npm i -D salinger
 
 ## Windows support
 
-Salinger tries to be as friendly as possible with Windows, but that doesn't mean it has any sympath for those who use `cmd.exe`. Most (if not all) of the things you can do with Salinger will work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
+Salinger tries to be as friendly as possible with Windows, but that doesn't mean it has any sympath for those who use `cmd.exe`. Anything you do with Salinger should work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
 
-I didn't experiment with the [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about). Theoretically, everything should be fine there.
+I didn't try [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about). Theoretically, everything should be fine there.
 
-When something doesn't work even with these tools, it should have been noted. If something didn't work, and you didn't see a disclaimer for it, please open an issue. [See the currently open issues under the label `windows`.](https://github.com/scriptype/salinger/labels/windows)
+If you encounter a problem when using Salinger on Windows, please check out the [Windows Issues](https://github.com/scriptype/salinger/labels/windows).
 
 ## Credits
 
