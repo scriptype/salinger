@@ -164,7 +164,7 @@ npm i -D salinger
 
 ## Windows support
 
-Salinger tries to be as friendly as possible with Windows, but that doesn't mean it has any sympath for those who use `cmd.exe`. Anything you do with Salinger should work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
+Salinger tries to be as friendly as possible with Windows, but `cmd.exe` isn't supported. Anything you do with Salinger should work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
 
 I didn't try [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about). Theoretically, everything should be fine there.
 
