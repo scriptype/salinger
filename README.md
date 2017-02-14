@@ -76,20 +76,18 @@ npm i -D salinger
    
    To setup this folder structure with no effort, run this in the project root:
    
-   (**[This doesn't work on Windows](https://github.com/scriptype/salinger/issues/2)**)
-   
    ```sh
-   salinger_home="scripts" $(npm bin)/salinger-setup
+   $(npm bin)/salinger-setup
    ```
    
-   You can change the `salinger_home="scripts"` to `salinger_home="any-folder-name-i-want"`. But, if you do that, make sure you have this lines in the package.json:
+   You can rename the `scripts` to anything. But, if you do that, make sure you have this `config` field in the package.json:
    ```json
    "config": {
-     "salinger-home": "any-folder-name-i-want"
+     "salinger-home": "custom_folder_name"
    }
    ```
    
-   Pro-tip: This is the only customizable part of Salinger. You can change this config key whenever you want and Salinger will look up that folder to find the tasks and everything.
+   Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.
    
  - Inside `env.js`, define environment variables:
  
