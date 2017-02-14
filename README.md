@@ -10,6 +10,7 @@
 - [What Salinger offers](#what-salinger-offers)
 - [Install](#install)
 - [Getting started](#getting-started)
+- [Windows support](#windows-support)
 - [Credits](#credits)
 
 ## Motivation
@@ -34,7 +35,7 @@ Npm run scripts are a great way to organize the build scripts of a Node.js proje
  - Promise wrappers around the actual script codes, so it's trivial to implement chaining mechanisms between the tasks.
  - No magic, instant grasp of the full system, almost non-existent learning curve.
  - In a script, `node_module`s are directly callable with their names, as in package.json.
- - Not extendable, nor pluggable or anything like that. If you want to have a Salinger behaving differently, fork it and implement that behaviour yourself (the code is so small). If you think it would be beneficial for everyone, open a PR and let's discuss it.
+ - Not extendable, nor pluggable or anything like that. If you want to have a Salinger behaving differently, fork it and implement that behavior yourself (the code is so small, I'm planning to annotate the source). If you think it would be beneficial for everyone, please open a PR and let's discuss it.
 
 ## Install
 
@@ -74,6 +75,9 @@ npm i -D salinger
    ```
    
    To setup this folder structure quickly, run this in the project root:
+   
+   (**I couldn't manage to get this running on Git Bash or Cygwin, [I'd appreciate any help](https://github.com/scriptype/salinger/issues/2)**)
+   
    ```sh
    salinger_home="scripts" $(npm bin)/salinger-setup
    ```
@@ -160,6 +164,14 @@ npm i -D salinger
    # logs "bar"
    # logs "i do whatever i want with all these promises"
    ```
+
+## Windows support
+
+Salinger tries to be as friendly as possible with Windows, but that doesn't mean it has any sympath for those who use `cmd.exe`. Most (if not all) of the things you can do with Salinger will work in [Git Bash](https://git-scm.com/downloads) and [Cygwin](https://cygwin.com/install.html), and you should be using a tool like one of these, anyway.
+
+I didn't experiment with the [Bash on Ubuntu on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about). Theoretically, everything should be fine there.
+
+When something doesn't work even with these tools, it should have been noted. If something didn't work, and you didn't see a disclaimer for it, please open an issue. [See the currently open issues under the label `windows`.](https://github.com/scriptype/salinger/labels/windows)
 
 ## Credits
 
