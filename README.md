@@ -76,7 +76,7 @@ npm i -D salinger
    
    To setup this folder structure quickly, run this in the project root:
    
-   (**I couldn't manage to get this running on Git Bash or Cygwin, [I'd appreciate any help](https://github.com/scriptype/salinger/issues/2)**)
+   (**Windows note: I couldn't manage to get this running on Git Bash or Cygwin, [any help'd be appreciated](https://github.com/scriptype/salinger/issues/2)**)
    
    ```sh
    salinger_home="scripts" $(npm bin)/salinger-setup
