@@ -35,7 +35,7 @@ Npm run scripts are a great way to organize the build scripts of a Node.js proje
  - Scripts are run inside promise wrappers, so it's trivial to implement chaining mechanisms between the them.
  - No magic, instant grasp of the full system, almost non-existent learning curve.
  - In a script, `node_module`s are directly callable with their names, as in package.json.
- - Concrete library. No moving parts other than a home directory config.
+ - A concrete library. No moving parts other than a home directory config.
 
 ## Install
 
@@ -87,7 +87,7 @@ npm i -D salinger
    }
    ```
    
-   <sub>Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.</sub>
+   Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.
    
  - Inside `env.js`, define environment variables:
  
@@ -144,7 +144,7 @@ npm i -D salinger
   console.log(process.env.FOO)
    ```
  
-   **tasks/bye.py**
+   **tasks/bye.py** <sub>(This requires `python` executable in the `$PATH`. Change this to `sh`/`js` if you don't have Python installed.)</sub>
    ```py
   import os
   print(os.environ['LOVELY_PARAMETER'])
