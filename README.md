@@ -78,6 +78,7 @@ npm i -D salinger
    
    ```sh
    $(npm bin)/salinger-setup
+   # for Cygwin and Git Bash: node_modules/salinger/bin/setup.sh
    ```
    
    You can rename the `scripts` to anything. But, if you do that, make sure you have this `config` field in the package.json:
