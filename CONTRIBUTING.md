@@ -11,3 +11,5 @@ Here are the things to consider:
 - To run travis scripts: `sh scripts/travis.sh`
 - To run appveyor scripts (in powershell): `scripts/appveyor.ps1`
 - Code style is what eslint says.
+- Put [skip ci] at the beginning of cosmetic commits' messages.
+- You can put [appveyor], [travis], [codeclimate] at the beginning of related commits' messages.
