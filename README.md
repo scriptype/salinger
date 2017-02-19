@@ -329,6 +329,12 @@ What's exported from env.js, though, will be accessible from process.env (not pe
 
 ## Trade-offs
 
+This project doesn't claim to be a full-fledged build solution. It helps bringing some consistency and some freedom to the projects, especially the ones whose build scripts are formerly written with npm run scripts.
+
+Salinger currently doesn't (and, by nature, probably will never) use virtual-fs or streams, which puts it behind the tools like Gulp, in terms of build performance. If your priority is superior build performance, just use Gulp or whatever suits your needs better.
+
+Salinger is more about freedom. It's ecosystem-free, learning-curve-free, provides freedom to choose betwen the CLI and the API. This freedom comes with little to no abstraction. Therefore, it has little to no improvements or optimizations.
+
 ## Windows support
 
 Salinger may or may not work on `cmd.exe`. Consider using one of these:
