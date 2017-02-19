@@ -17,6 +17,8 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 - [Motivation](#motivation)
 - [Install](#install)
 - [Getting started](#getting-started)
+- [Environment variables](#environment-variables)
+- [Trade-offs](#trade-offs)
 - [Windows support](#windows-support)
 - [Credits](#credits)
 
@@ -192,6 +194,10 @@ Let's check what we got:
 npm start
 # starts an http server at 8081
 ```
+
+## Environment variables
+
+## Trade-offs
 
 ## Windows support
 
