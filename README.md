@@ -17,6 +17,8 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 - [Motivation](#motivation)
 - [Install](#install)
 - [Getting started](#getting-started)
+- [Salinger.run()](#salingerrun)
+- [Changing the default directory](#changing-the-default-directory)
 - [Environment variables](#environment-variables)
 - [Trade-offs](#trade-offs)
 - [Windows support](#windows-support)
@@ -194,6 +196,10 @@ Let's check what we got:
 npm start
 # starts an http server at 8081
 ```
+
+## Salinger.run()
+
+## Changing the default directory
 
 ## Environment variables
 
