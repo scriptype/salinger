@@ -30,7 +30,7 @@ After spending some time with npm scripts, problems arise:
  - Easily inject variables to the scripts.
  - No ecosystem of plugins to adapt to. Use the core packages.
  - A compact package.json
- - Chaining mechanism via promises between the scripts.
+ - Orchestrate your scripts with promises.
  - Almost non-existent learning curve.
 
 ## Install
