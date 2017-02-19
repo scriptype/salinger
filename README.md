@@ -13,6 +13,7 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 ## Contents
 
 - [What Salinger offers](#what-salinger-offers)
+- [An example with `npm run-scripts` and Salinger](#an-example-with-npm-run-scripts-and-salinger)
 - [Motivation](#motivation)
 - [Install](#install)
 - [Getting started](#getting-started)
@@ -28,6 +29,65 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
  - A compact package.json
  - Orchestrate your scripts with promises.
  - Almost non-existent learning curve.
+
+## An example with `npm run-scripts` and Salinger
+
+Let's say we have some scripts in our `package.json`:
+
+```json
+"scripts": {
+  "foo": "someCrazyComplicatedStuff && anotherComplicatedThingGoesRightHere",
+  "bar": "aTaskThatRequiresYouToWriteThisLongScriptInOneLine",
+  "fooBar": "npm run foo && npm run bar"
+}
+```
+
+If we had used Salinger, the `package.json` would look like this:
+
+```json
+"scripts": {
+  "foo": "salinger foo",
+  "bar": "salinger bar",
+  "fooBar": "salinger fooBar"
+}
+```
+
+Then we would have a `scripts/tasks.js` like this:
+
+```js
+var run = require('salinger').run
+
+module.exports = {
+  foo() {
+    return run('crazy_complicated')
+      .then(_ => run('another_complicated'))
+  },
+  bar() {
+    return run('my_long_script')
+  },
+  fooBar() {
+    run(this.foo)
+      .then(this.bar)
+  }
+}
+```
+
+Normally we wouldn't have to `return` in tasks if we didn't reuse them.
+
+And we would have these files in `scripts/tasks/`:
+```
+crazy_complicated.sh
+another_complicated.js
+my_long_script.rb
+```
+
+Yes, they can be written in any scripting language.
+
+So, what did we do here? We have separated the entry points, the orchestration/chaining and the actual implementations of scripts from each other.
+
+- Keep the `package.json` clean and brief, it only has entry points to our build system.
+- Chain the tasks and scripts in a more familiar and powerful way, in a fresh environment.
+- Write the actual scripts in whatever way you want. CLI or programmatic; `sh` or `js` or... You decide.
 
 ## Motivation
 
