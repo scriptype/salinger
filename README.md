@@ -329,7 +329,7 @@ What's exported from env.js, though, will be accessible from process.env (not pe
 
 ## Trade-offs
 
-This project doesn't claim to be a full-fledged build solution. It helps bringing some consistency and some freedom to the projects, especially the ones whose build scripts are formerly written with npm run scripts.
+This project doesn't claim to be a full-fledged build solution. It helps bringing some consistency and some freedom to the build scripts of projects, especially to the ones that are formerly written with npm run scripts.
 
 Salinger currently doesn't (and, by nature, probably will never) use virtual-fs or streams, which puts it behind the tools like Gulp, in terms of build performance. If your priority is superior build performance, just use Gulp or whatever suits your needs better.
 
