@@ -333,7 +333,7 @@ This project doesn't claim to be a full-fledged build solution. It helps bringin
 
 Salinger currently doesn't (and, by nature, probably will never) use virtual-fs or streams, which puts it behind the tools like Gulp, in terms of build performance. If your priority is superior build performance, just use Gulp or whatever suits your needs better.
 
-Salinger is more about freedom. It's ecosystem-free, learning-curve-free, provides freedom to choose betwen the CLI and the API. This freedom comes with little to no abstraction. Therefore, it has little to no improvements or optimizations.
+Salinger is more about freedom. It's ecosystem-free, learning-curve-free, provides freedom to choose betwen the CLI and the API. This freedom comes with little to no abstraction. Therefore, it has little to no performance improvements or optimizations.
 
 ## Windows support
 
