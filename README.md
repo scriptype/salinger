@@ -15,20 +15,19 @@
 
 ## Motivation
 
-Npm run scripts are a great way to organize the build scripts of a Node.js project, but after spending some time with them, chances are the `package.json` will end up looking like a mess. Wish we had more space and structure for our run scripts, to write them with full enjoyment. Having to write long-ish shell scripts as one-liners doesn't feel particularly great (or, is it just me?). Here are some common issues with writing npm scripts:
- - It's unpleasant reading several long lines of CLI code in the `package.json`. Not eye candy, at best.
- - Sometimes you _may_ want to use the programmatic API of a tool for a given task. Well, you can't do that in `package.json` without:
-   - a) Writing the js code in one line, with full of backslashes, as a parameter to `node -e`
-   - b) Creating a separate file for the script and referencing it from the related npm script, which breaks the integrity of script definitions. Some scripts live in their own module while others are directly written inside the `package.json`.
- - A json file is apparently not the most comfortable place to write the whole script contents in it. Its syntax rules are prohibitive against writing complex code in it.
- - Creating and using variables is counterintuitive.
- - Use [Makefile](https://github.com/scriptype/Makefile-for-the-Front-End) to have more space, freedom and organization? It's all sweet until you think "[well, this task better be written with Node.js](https://github.com/scriptype/Makefile-for-the-Front-End/blob/master/Makefile#L112)", which takes you to the point _b)_ above. Also, the resources for learning Make will be mostly some old-style stuff that targets C developers.
+After spending some time with npm scripts, problems arise:
+ - It's unpleasant reading and writing several long lines of CLI code in the `package.json`. Not eye candy, at best.
+ - A json file is apparently not the most comfortable place to write the whole script contents in it. Its syntax rules are prohibitive against writing any complex code in it.
+ - The way of creating and using variables is counterintuitive.
+ - We can't use the programmatic API of a tool in `package.json` without:
+   - a) Writing the js code in one line as a parameter to `node -e` (full of backslashes).
+   - b) Creating a separate file for it, which breaks the integrity of script definitions. We have to organize these separate scripts somehow.
 
 ## What Salinger offers
  - A well structured build environment.
- - Scripts can be written in any of these: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`.
+ - Write scripts in any of these: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`.
  - Use CLI or programmatic API for a given task, whatever suits your needs better.
- - Intuitive ways to inject variables to the scripts.
+ - Easily inject variables to the scripts.
  - No ecosystem of plugins to adapt to. Use the core packages.
  - A compact package.json
  - Chaining mechanism via promises between the scripts.
