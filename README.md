@@ -71,8 +71,7 @@ module.exports = {
     return run('my_long_script')
   },
   fooBar() {
-    run(this.foo)
-      .then(this.bar)
+    this.foo().then(this.bar)
   }
 }
 ```
@@ -201,6 +200,62 @@ npm start
 ## Docs
 
 ### Salinger.run()
+
+Currently being the only member of Salinger's API, run takes two parameters and returns a `Promise`:
+
+ - Filename of the script to run. This doesn't include the extension and it's not a path; just the filename. If Salinger finds a file with the supplied filename and a supported extension, it will execute it. Otherwise you'll see errors on your console. 
+   
+   If there are multiple files with the same name but different extensions, only one of them will be selected every time (Lookup order is: `sh`, `js`, `py`, `rb`, `pl`, `lua`).
+ 
+ - Optional - Environment variables specific to this run call. See: [Environment variables](#environment-variables).
+
+```js
+run('do-things', {
+  HELLO: 'world'
+})
+```
+
+You can chain run calls just like any other `Promise`:
+
+```js
+run('foo')
+  .then(_ => run('bar'))
+  .then(_ => run('bam'))
+```
+
+Concurrently executing scripts is a no-brainer:
+
+```js
+run('foo')
+run('bar')
+```
+
+You can use `Promise.all`, `Promise.race` etc.
+
+One interesting pattern would be chaining and reusing the exported Salinger tasks:
+
+```js
+// scripts/tasks.js
+var run = require('salinger').run
+
+module.exports = {
+
+  lorem() {
+    return run('foo')
+  },
+
+  ipsum() {
+    return run('bar')
+  },
+  
+  dolor() {
+    this.lorem()
+      .then(_ => run('grapes', { HERE: 'A_VARIABLE' }))
+      .then(this.ipsum)
+      .then(_ => run('trek'))
+  }
+}
+```
 
 ### Changing the default `scripts` directory
 
