@@ -4,7 +4,7 @@
 
 [![Travis Status Badge](https://api.travis-ci.org/scriptype/salinger.svg?branch=master)](https://travis-ci.org/scriptype/salinger) [![AppVeyor Status Badge](https://ci.appveyor.com/api/projects/status/6e5tqfcgd3ihlksa?svg=true)](https://ci.appveyor.com/project/scriptype/salinger-npm) [![Coverage Status Badge](https://coveralls.io/repos/github/scriptype/salinger/badge.svg?branch=master)](https://coveralls.io/github/scriptype/salinger?branch=master) [![Code Climate Badge](https://codeclimate.com/github/scriptype/salinger/badges/gpa.svg)](https://codeclimate.com/github/scriptype/salinger) [![bitHound Overall Score Badge](https://www.bithound.io/github/scriptype/salinger/badges/score.svg)](https://www.bithound.io/github/scriptype/salinger)
 
-Salinger is (almost) just a Promise wrapper around the native `fs.exec()` calls. And it may replace your favorite task runner.
+Salinger is (almost) just a Promise wrapper around the native `fs.exec()` calls. And it replaces your favorite task runner.
 
 Easy to step in, easy to step out. No attachment to the glue modules between the runner and the tools.
 
