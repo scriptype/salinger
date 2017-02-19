@@ -197,6 +197,62 @@ npm start
 
 ## Environment variables
 
+There must be a file named `env.js` in the salinger-home directory. Values exported from this module will be accessible to all tasks through `process.env`. A sample `env.js` may look like this:
+
+```js
+var path = require('path')
+
+const SRC = path.join(__dirname, '..', 'src')
+const DIST = path.join(__dirname, '..', 'dist')
+
+const PORT = 8080
+
+module.exports = {
+  SRC,
+  DIST,
+  PORT
+}
+```
+
+This will extend the process.env during the execution of the scripts.
+
+Also, Salinger's run method takes an optional second parameter which also extends process.env with the provided values. But, these values are available only for this specific `run` call. Let's say we run a script from a task, like this:
+
+```js
+myTask(these, parameters, are, coming, from, CLI) {
+
+  // Maybe do some logic depending on the values of CLI parameters.
+  // ...
+
+  run('my-script', {
+  
+    // Or inject those parameters as environment variables to a script
+    these: these,
+    parameters: parameters,
+    are: are,
+    from: from,
+    CLI: CLI,
+    
+    // Let's pass a variable that conflicts with an existing key in the env.js
+    PORT: 5001
+    
+  })
+  
+}
+```
+
+And, of course, add an entry point for this task to package.json:
+
+```json
+"scripts": {
+  "myTask": "salinger myTask hello there from planet earth"
+}
+```
+
+Say, this is a production environment and there's already a `PORT` environment variable independent from all of these. Now when we run `npm run myTask`, that PORT variable will be overridden by 8080, since it's defined in env.js. And, since we specify that variable again, in the second parameter of run call of 'my-script', it gets overriden again just for this execution of 'my-script'. So, `PORT` is 5001 for my-script, only for this call.
+
+What's exported from env.js, though, will be accessible from process.env (not persistent) during the execution of the scripts. So, checking a key's existence before declaring it would help.
+
 ## Trade-offs
 
 ## Windows support
