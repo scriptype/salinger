@@ -339,7 +339,7 @@ Salinger may or may not work on `cmd.exe`. Consider using one of these:
  
 ...and everything should be fine.
 
-If you encounter a problem with Salinger on Windows, please see the [Windows Issues](https://github.com/scriptype/salinger/labels/windows) and open one if necessary.
+If you encounter a problem with Salinger on Windows, please see the [Windows Issues](https://github.com/scriptype/salinger/labels/windows) and open a new one if necessary.
 
 ## Credits
 
