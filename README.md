@@ -17,9 +17,10 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 - [Motivation](#motivation)
 - [Install](#install)
 - [Getting started](#getting-started)
-- [Salinger.run()](#salingerrun)
-- [Changing the default `scripts` directory](#changing-the-default-scripts-directory)
-- [Environment variables](#environment-variables)
+- [Docs](#docs)
+ - [Salinger.run()](#salingerrun)
+ - [Changing the default `scripts` directory](#changing-the-default-scripts-directory)
+ - [Environment variables](#environment-variables)
 - [Trade-offs](#trade-offs)
 - [Windows support](#windows-support)
 - [Credits](#credits)
@@ -197,9 +198,11 @@ npm start
 # starts an http server at 8081
 ```
 
-## Salinger.run()
+## Docs
 
-## Changing the default `scripts` directory
+### Salinger.run()
+
+### Changing the default `scripts` directory
 
 You can choose to have Salinger-related files in a different folder. If that is the case, just add this config to your `package.json`:
 
@@ -211,7 +214,7 @@ You can choose to have Salinger-related files in a different folder. If that is 
 
 Now, you can move everything to that folder and Salinger will start to work with that path. Just be aware that you may need to fix any paths you set in `env.js`.
 
-## Environment variables
+### Environment variables
 
 There must be a file named `env.js` in the salinger-home directory. Values exported from this module will be accessible to all tasks through `process.env`. A sample `env.js` may look like this:
 
