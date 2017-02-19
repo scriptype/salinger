@@ -25,17 +25,14 @@ Npm run scripts are a great way to organize the build scripts of a Node.js proje
  - Use [Makefile](https://github.com/scriptype/Makefile-for-the-Front-End) to have more space, freedom and organization? It's all sweet until you think "[well, this task better be written with Node.js](https://github.com/scriptype/Makefile-for-the-Front-End/blob/master/Makefile#L112)", which takes you to the point _b)_ above. Also, the resources for learning Make will be mostly some old-style stuff that targets C developers.
 
 ## What Salinger offers
- - A well structured environment to organize the build tasks.
- - Scripts can be written in any language (currently: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`).
- - There are multiple intuitive ways to inject variables to the scripts.
- -  No ecosystem of plugins to adapt to. Use the core packages instead. There won't be a `salinger-plugin-whatever`.
- - Tools we use can have a good CLI and a rather complex API (or vice versa). With Salinger, we can use whichever we want for a task.
- - Every script has its own file.
- - `scripts` field in the `package.json` is still used, but only as entry points for Salinger tasks. They are very short.
- - Scripts are run inside promise wrappers, so it's trivial to implement chaining mechanisms between the them.
- - No magic, instant grasp of the full system, almost non-existent learning curve.
- - In a script, `node_module`s are directly callable with their names, as in package.json.
- - A concrete library. No moving parts other than a home directory config.
+ - A well structured build environment.
+ - Scripts can be written in any of these: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`.
+ - Use CLI or programmatic API for a given task, whatever suits your needs better.
+ - Intuitive ways to inject variables to the scripts.
+ - No ecosystem of plugins to adapt to. Use the core packages.
+ - A compact package.json
+ - Chaining mechanism via promises between the scripts.
+ - Almost non-existent learning curve.
 
 ## Install
 
