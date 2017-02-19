@@ -83,7 +83,7 @@ my_long_script.rb
 
 Yes, they can be written in any scripting language.
 
-So, what did we do here? We have separated the entry points, the orchestration/chaining and the actual implementations of scripts from each other.
+So, what did we do here? We have separated the entry points, the orchestration/chaining and the actual implementations from each other.
 
 - Keep the `package.json` clean and brief, it only has entry points to our build system.
 - Chain the tasks and scripts in a more familiar and powerful way, in a fresh environment.
