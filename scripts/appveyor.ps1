@@ -3,17 +3,15 @@ cd __test
 
 npm init -y > $null
 
-sh ..\bin\setup.sh
+cp ..\scripts\files\scripts . -recurse
 
 node ..\scripts\helpers\packageJsonScripts `
   package.json `
-  hello "node ..\bin\index.js hello"
+  start "node ..\bin\index.js start" `
+  lorem "node ..\bin\index.js lorem"
 
-echo "module.exports = {MY_VAR:'my-var'}" | out-file -encoding ASCII scripts/env.js
-echo "var run=require('../..').run;exports.hello=()=>run('hello')" | out-file -encoding ASCII scripts/tasks.js
-echo "if(process.env['MY_VAR']!=='my-var')throw 'not ok' " | out-file -encoding ASCII scripts/tasks/hello.js
-
-npm run hello
+npm start
+npm run lorem
 
 cd ..
 rm -r __test
