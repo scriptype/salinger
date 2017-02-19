@@ -827,8 +827,8 @@
       class="co-emphasize4-stroke tasksjs__scriptline"
       fill="transparent" />
 
-    <text x="-15" y="100" transform="rotate(20)" class="co-string tasksjs__scriptdesc">
-      .(sh|js|py|rb|pl|lua)
+    <text x="15" y="100" transform="rotate(20)" class="co-string tasksjs__scriptdesc">
+      script name
     </text>
 
   </g>
