@@ -12,12 +12,22 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 
 ## Contents
 
-- [Motivation](#motivation)
 - [What Salinger offers](#what-salinger-offers)
+- [Motivation](#motivation)
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Windows support](#windows-support)
 - [Credits](#credits)
+
+## What Salinger offers
+ - A well structured build environment.
+ - Write scripts in any of these: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`.
+ - Use CLI or programmatic API for a given task, whatever suits your needs better.
+ - Easily inject variables to the scripts.
+ - No ecosystem of plugins to adapt to. Use the core packages.
+ - A compact package.json
+ - Orchestrate your scripts with promises.
+ - Almost non-existent learning curve.
 
 ## Motivation
 
@@ -31,16 +41,6 @@ After spending some time with npm scripts, problems arise:
  
 As a general note, an ideal task runner should _run_ any _tasks_ I want it to. Not the _only tasks_ that are compliant with its API.
 
-## What Salinger offers
- - A well structured build environment.
- - Write scripts in any of these: `Unix Shell`, `JavaScript`, `Python`, `Ruby`, `Perl`, `Lua`.
- - Use CLI or programmatic API for a given task, whatever suits your needs better.
- - Easily inject variables to the scripts.
- - No ecosystem of plugins to adapt to. Use the core packages.
- - A compact package.json
- - Orchestrate your scripts with promises.
- - Almost non-existent learning curve.
-
 ## Install
 
 ```
@@ -48,6 +48,8 @@ npm i -D salinger
 ```
 
 ## Getting started
+
+We have a simple [boilerplate project](https://github.com/scriptype/salinger-basic-boilerplate). That can help to understand the full system. [Take a look at it](https://github.com/scriptype/salinger-basic-boilerplate).
 
  - Define the scripts in the `package.json`:
  
