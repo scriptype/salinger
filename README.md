@@ -186,13 +186,12 @@ We've checked for an existing PORT variable – we usually have one in productio
 
 Variables you export from `env.js` is accessible from all scripts, via `process.env`.
 
-
- - Finally, let's check what we got:
+Let's check what we got:
  
-   ```sh
-   npm start
-   # starts an http server at 8081
-   ```
+```sh
+npm start
+# starts an http server at 8081
+```
 
 ## Windows support
 
