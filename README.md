@@ -83,7 +83,7 @@ my_long_script.rb
 
 Yes, they can be written in any scripting language.
 
-So, what did we do here? We have separated the entry points, the orchestration/chaining and the actual implementations.
+So, what did we do here? We have separated the entry points, the orchestration/chaining part and the actual implementations.
 
 - Keep the `package.json` clean and brief, it only has entry points to our build system.
 - Chain the tasks and scripts in a more familiar and powerful way, in a fresh environment.
@@ -99,7 +99,7 @@ After spending some time with npm scripts, problems arise:
    - a) Writing the js code in one line as a parameter to `node -e` (full of backslashes).
    - b) Creating a separate file for it, which breaks the integrity of script definitions. We have to organize these separate scripts somehow.
  
-As a general note, an ideal task runner should _run_ any _tasks_ I want it to. Not the _only tasks_ that are compliant with its API.
+As a general note, an ideal task runner should run _any_ tasks we want it to. Not the _only tasks_ that are compliant with its API.
 
 ## Install
 
@@ -109,128 +109,85 @@ npm i -D salinger
 
 ## Getting started
 
-We have a simple [boilerplate project](https://github.com/scriptype/salinger-basic-boilerplate). That can help to understand the full system. [Take a look at it](https://github.com/scriptype/salinger-basic-boilerplate).
+We have a simple [boilerplate project](https://github.com/scriptype/salinger-basic-boilerplate). It'll surely help to understand better what's going on. Really, [check it out](https://github.com/scriptype/salinger-basic-boilerplate).
 
- - Define the scripts in the `package.json`:
+So, let's start a new project and use Salinger in it.
+
+Initialize an empty project:
+```sh
+mkdir test-project
+cd test-project
+npm init -y
+```
+
+Add this script to the `package.json`:
+
+```json
+"scripts": {
+  "start": "salinger start"
+}
+```
+
+Let's have a dependency:
  
-   ```json
-  "scripts": {
-    "start": "salinger start",
-    "helloWorld": "salinger helloWorld someParameter"
-  }
-   ```
-   
-   We create two scripts: `start` and `helloWorld`, which takes `someParameter`.
- 
- - Let's have a dependency:
- 
-   ```sh
-   npm i -D http-server
-   ```
-   
- - Next, we need a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
- 
-   ```
+```sh
+npm i -D http-server
+```
+
+Next, create a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
+
+```
 ├─┬ scripts/
 │ ├── env.js
 │ ├── tasks.js
 │ └─┬ tasks/
-│   ├── server.sh
-│   ├── hello.js
-│   └── bye.py
-   ```
+│   └── server.sh
+```
    
-   Run this in the project root to setup the above folder structure:
-   
-   ```sh
-   $(npm bin)/salinger-setup
-   # for Cygwin and Git Bash: node_modules/salinger/bin/setup.sh
-   ```
-   
-   You can rename the `scripts` to anything. But, if you do that, make sure you have this `config` field in the package.json:
-   ```json
-   "config": {
-     "salinger-home": "custom_folder_name"
-   }
-   ```
-   
-   Pro-tip: This is the only customizable part of Salinger. You can change this config key and Salinger will look up that folder to find the tasks and everything.
-   
- - Inside `env.js`, define environment variables:
- 
-   ```js
-  module.exports = {
-    FOO: 'foo',
-    PORT: 8081
-  }
-   ```
- 
- - `tasks.js` is the place to map the npm run commands to the actual scripts. The scripts are called via Salinger's exported run method. `run(...)` returns a promise, so it's up to your imagination how to chain and hook the run calls with each other:
- 
-   ```js
-  var run = require('salinger').run
+First, let's write the `tasks.js` inside the `scripts`. Create it and copy the below code and save it:
 
-  module.exports = {
-    start() {
-      run('server')
-    },
-    
-    helloWorld(hereComesMyCLIParameter) {
-      run('hello')
-        .then(_ => run('world', {
-          FOO: 'bar'
-        }))
-        .then(_ => run('bye', {
-          LOVELY_PARAMETER: hereComesMyCLIParameter
-        }))
-        .then(_ => {
-          console.log('All done!')
-        })
-    }
+```js
+var run = require('salinger').run
+
+module.exports = {
+  start() {
+    run('server')
   }
-   ```
-   
-     - Names of the exported methods (Salinger tasks) should reflect what you call them in package.json.
-     - File names of the scripts, on the other hand, should be the same as what you call them in `run()` calls.
-   
- - The scripts:
- 
-   **tasks/server.sh**
-   
-   ```sh
-  http-server -p $PORT
-   ```
- 
-   **tasks/hello.js**
-   ```js
-  console.log('hello')
-   ```
- 
-   **tasks/world.js**
-   ```js
-  console.log(process.env.FOO)
-   ```
- 
-   **tasks/bye.py** <sub>(This requires `python` executable in the `$PATH`. Change this to `sh`/`js` if you don't have Python installed.)</sub>
-   ```py
-  import os
-  print(os.environ['LOVELY_PARAMETER'])
-   ```
-   
-   
+}
+```
+
+So, we have a task that `npm start` will redirect to, whenever we call it. Any method you export here will be available as `salinger taskName`. Our `start` task runs a script called `server` but, we haven't created it yet. So, let's do it.
+
+Create a folder named `tasks` inside our `scripts` folder. This folder will hold all future script files.
+
+Then create `server.sh` in `scripts/tasks/` and copy the below code to it:
+
+```sh
+http-server -p $PORT
+```
+
+Our `server` script looks for `PORT` environment variable. Let's provide that.
+
+Create `env.js` inside the `scripts` folder. Its content should be as follows:
+
+```js
+const PORT = process.env.PORT || '8081'
+
+module.exports = {
+  PORT
+}
+```
+
+We've checked for an existing PORT variable to use that – we usually have on in production environments. And if it doesn't exist, just use '8081', we said.
+
+Variables you export from `env.js` is accessible from all scripts, via `process.env`.
+
+
  - Finally, let's check what we got:
  
    ```sh
    npm start
    # starts an http server at 8081
-   ```
- 
-   ```sh
-   npm run helloWorld
-   # logs "hello"
-   # logs "bar"
-   # logs "someParameter"
-   # logs "All done!"
    ```
 
 ## Windows support
