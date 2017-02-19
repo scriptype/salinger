@@ -4,8 +4,7 @@
   "description": "Ecosystem-free and flexible task runner that goes well with npm scripts.",
   "main": "lib/index.js",
   "bin": {
-    "salinger": "bin/index.js",
-    "salinger-setup": "bin/setup.sh"
+    "salinger": "bin/index.js"
   },
   "scripts": {
     "test": "tape tests | tap-spec",
