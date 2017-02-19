@@ -18,7 +18,7 @@ Easy to step in, easy to step out. No attachment to the glue modules between the
 - [Install](#install)
 - [Getting started](#getting-started)
 - [Salinger.run()](#salingerrun)
-- [Changing the default directory](#changing-the-default-directory)
+- [Changing the default `scripts` directory](#changing-the-default-scripts-directory)
 - [Environment variables](#environment-variables)
 - [Trade-offs](#trade-offs)
 - [Windows support](#windows-support)
@@ -199,7 +199,17 @@ npm start
 
 ## Salinger.run()
 
-## Changing the default directory
+## Changing the default `scripts` directory
+
+You can choose to have Salinger-related files in a different folder. If that is the case, just add this config to your `package.json`:
+
+```json
+"config": {
+  "salinger-home": "path/to/new-folder"
+}
+```
+
+Now, you can move everything to that folder and Salinger will start to work with that path. Just be aware that you may need to fix any paths you set in `env.js`.
 
 ## Environment variables
 
