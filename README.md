@@ -19,9 +19,11 @@ After spending some time with npm scripts, problems arise:
  - It's unpleasant reading and writing several long lines of CLI code in the `package.json`. Not eye candy, at best.
  - A json file is apparently not the most comfortable place to write the whole script contents in it. Its syntax rules are prohibitive against writing any complex code in it.
  - The way of creating and using variables is counterintuitive.
- - We can't use the programmatic API of a tool in `package.json` without:
+ - We can't use the programmatic API of a tool in the `package.json` without:
    - a) Writing the js code in one line as a parameter to `node -e` (full of backslashes).
    - b) Creating a separate file for it, which breaks the integrity of script definitions. We have to organize these separate scripts somehow.
+ 
+As a general note, an ideal task runner should _run_ any _tasks_ I want it to. Not the _only tasks_ that are compliant with its API.
 
 ## What Salinger offers
  - A well structured build environment.
