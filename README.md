@@ -160,6 +160,10 @@ So, we have a task that `npm start` will redirect to, whenever we call it. Any m
 
 Create a folder named `tasks` inside our `scripts` folder. This folder will hold all future script files.
 
+```sh
+mkdir scripts/tasks
+```
+
 Then create `server.sh` in `scripts/tasks/` and copy the below code to it:
 
 ```sh
@@ -168,7 +172,7 @@ http-server -p $PORT
 
 Our `server` script looks for `PORT` environment variable. Let's provide that.
 
-Create `env.js` inside the `scripts` folder. Its content should be as follows:
+Create `env.js` inside the `scripts` folder. Its content should be the following code:
 
 ```js
 const PORT = process.env.PORT || '8081'
@@ -178,7 +182,7 @@ module.exports = {
 }
 ```
 
-We've checked for an existing PORT variable to use that – we usually have on in production environments. And if it doesn't exist, just use '8081', we said.
+We've checked for an existing PORT variable – we usually have one in production environments. And if it doesn't exist, just use '8081', we said.
 
 Variables you export from `env.js` is accessible from all scripts, via `process.env`.
 
