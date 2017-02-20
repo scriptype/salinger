@@ -334,7 +334,7 @@ And, of course, add an entry point for this task to package.json:
 
 Say, this is a production environment and there's already a `PORT` environment variable independent from all of these. Now when we run `npm run myTask`, that PORT variable will be overridden by 8080, since it's defined in env.js. And, since we specify that variable again, in the second parameter of run call of 'my-script', it gets overriden again just for this execution of 'my-script'. So, `PORT` is 5001 for my-script, only for this call.
 
-What's exported from env.js, though, will be accessible from process.env (not persistent) during the execution of the scripts. So, checking a key's existence before declaring it would help.
+What's exported from env.js, though, will be accessible from process.env (not persistent) during the execution of all scripts.
 
 ## Trade-offs
 
