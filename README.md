@@ -131,7 +131,7 @@ Make sure you've installed Salinger with this:
 npm i -D salinger
 ```
 
-Add a start script and map it to Salinger's start task in the `package.json`:
+Add a start script in the `package.json` which maps our start task:
 
 ```json
 "scripts": {
