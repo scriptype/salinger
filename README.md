@@ -77,21 +77,21 @@ module.exports = {
 }
 ```
 
-Normally we wouldn't have to `return` in tasks if we didn't reuse them.
+(Normally we wouldn't have to `return` in tasks if we didn't reuse them.)
 
-And we would have these files in `scripts/tasks/`:
+Finally, we would have the actual scripts in `scripts/tasks/`:
 ```
 crazy_complicated.sh
 another_complicated.js
 my_long_script.rb
 ```
 
-Yes, they can be written in any scripting language.
+(Yes, they can be written in any scripting language.)
 
-So, what did we do here? We have separated the entry points, the orchestration/chaining part and the actual implementations.
+So, what did we do here? We have separated the entry points, the orchestration/chaining part and the actual script contents.
 
 - Keep the `package.json` clean and brief, it only has entry points to our build system.
-- Chain the tasks and scripts in a more familiar and powerful way, in a fresh environment.
+- Chain the tasks in a more familiar and powerful way, in a fresh environment.
 - Write the actual scripts in whatever way you want. CLI or programmatic; `sh` or `js` or... You decide.
 
 ## Motivation
