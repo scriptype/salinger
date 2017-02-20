@@ -109,7 +109,7 @@ As a general note, an ideal task runner should run _any_ tasks we want it to. No
 ## Install
 
 ```
-npm i -D salinger
+npm install --save-dev salinger
 ```
 
 ## Getting started
@@ -128,10 +128,16 @@ npm init -y
 Make sure you've installed Salinger with this:
 
 ```sh
-npm i -D salinger
+npm install --save-dev salinger
 ```
 
-Add a start script in the `package.json` which maps our start task:
+Let's have a dependency for our project:
+ 
+```sh
+npm install --save-dev http-server
+```
+
+Add a start script in the `package.json` which forwards to our start task:
 
 ```json
 "scripts": {
@@ -139,13 +145,7 @@ Add a start script in the `package.json` which maps our start task:
 }
 ```
 
-Let's have a dependency for our project:
- 
-```sh
-npm i -D http-server
-```
-
-Next, create a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. It will eventually look like this:
+Next, create a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger-related things. It will eventually look like this:
 
 ```
 ├─┬ scripts/
@@ -154,8 +154,8 @@ Next, create a folder named `scripts` in the root directory of our project. We'l
 │ └─┬ tasks/
 │   └── server.sh
 ```
-   
-First, let's write the `tasks.js` inside the `scripts`. The `task.js` will look like:
+
+First, let's create the `tasks.js` inside the `scripts`:
 
 ```js
 var run = require('salinger').run
@@ -167,23 +167,23 @@ module.exports = {
 }
 ```
 
-So, we have a task that `npm start` will redirect to, whenever we call it. Any method you export here will be available as `salinger taskName`. Our `start` task runs a script called `server` but, we haven't created it yet. So, let's do it.
+So, we have our start task that `npm start` will redirect to. It runs a script called `server`, so let's create it.
 
-Create a folder named `tasks` inside our `scripts` folder. This folder will hold all future script files.
+Create a folder named `tasks` inside the `scripts`. This folder will hold all future script files.
 
 ```sh
 mkdir scripts/tasks
 ```
 
-Then create `server.sh` in `scripts/tasks/`. Copy the below code to `server.sh`:
+Now create `server.sh` inside this folder:
 
 ```sh
 http-server -p $PORT
 ```
 
-Last missing part: our `server` script looks for `PORT` environment variable. Let's provide that.
+Last missing part: the script looks for a `PORT` environment variable but we didn't pass it.
 
-Create `env.js` inside the `scripts` folder. Its content should be:
+Create `env.js` inside the `scripts` folder:
 
 ```js
 const PORT = process.env.PORT || '8081'
@@ -201,6 +201,10 @@ Let's check what we got:
 npm start
 # starts an http server at 8081
 ```
+
+Now that you can add more tasks, that executes different scripts, and chain them together.
+
+At this point I recommend checking out the [Salinger-Basic Boilerplate](https://github.com/scriptype/salinger-basic-boilerplate) and reading the [docs](#docs) below to explore the possibilities.
 
 ## Docs
 
