@@ -131,7 +131,7 @@ Make sure you've installed Salinger with this:
 npm i -D salinger
 ```
 
-Add this script to the `package.json`:
+Add a start script and map it to Salinger's start task in the `package.json`:
 
 ```json
 "scripts": {
@@ -145,7 +145,7 @@ Let's have a dependency for our project:
 npm i -D http-server
 ```
 
-Next, create a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. The folder contents will look like this:
+Next, create a folder named `scripts` in the root directory of our project. We'll use this folder as the home directory for Salinger tasks. It will eventually look like this:
 
 ```
 ├─┬ scripts/
@@ -155,7 +155,7 @@ Next, create a folder named `scripts` in the root directory of our project. We'l
 │   └── server.sh
 ```
    
-First, let's write the `tasks.js` inside the `scripts`. Create it and copy the below code and save it:
+First, let's write the `tasks.js` inside the `scripts`. The `task.js` will look like:
 
 ```js
 var run = require('salinger').run
@@ -175,15 +175,15 @@ Create a folder named `tasks` inside our `scripts` folder. This folder will hold
 mkdir scripts/tasks
 ```
 
-Then create `server.sh` in `scripts/tasks/` and copy the below code to it:
+Then create `server.sh` in `scripts/tasks/`. Copy the below code to `server.sh`:
 
 ```sh
 http-server -p $PORT
 ```
 
-Our `server` script looks for `PORT` environment variable. Let's provide that.
+Last missing part: our `server` script looks for `PORT` environment variable. Let's provide that.
 
-Create `env.js` inside the `scripts` folder. Its content should be the following code:
+Create `env.js` inside the `scripts` folder. Its content should be:
 
 ```js
 const PORT = process.env.PORT || '8081'
@@ -192,8 +192,6 @@ module.exports = {
   PORT
 }
 ```
-
-We've checked for an existing PORT variable – we usually have one in production environments. And if it doesn't exist, just use '8081', we said.
 
 Variables you export from `env.js` is accessible from all scripts, via `process.env`.
 
