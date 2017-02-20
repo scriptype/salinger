@@ -58,7 +58,7 @@ If we had used Salinger, the `package.json` would look like this:
 }
 ```
 
-Then we would have a `scripts/tasks.js` like this:
+And we would implement chaining logic in `scripts/tasks.js`:
 
 ```js
 var run = require('salinger').run
