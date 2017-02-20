@@ -125,6 +125,12 @@ cd test-project
 npm init -y
 ```
 
+Make sure you've installed Salinger with this:
+
+```sh
+npm i -D salinger
+```
+
 Add this script to the `package.json`:
 
 ```json
@@ -133,7 +139,7 @@ Add this script to the `package.json`:
 }
 ```
 
-Let's have a dependency:
+Let's have a dependency for our project:
  
 ```sh
 npm i -D http-server
