@@ -169,13 +169,13 @@ module.exports = {
 
 So, we have our start task that `npm start` will redirect to. It runs a script called `server`, so let's create it.
 
-Create a folder named `tasks` inside the `scripts`. This folder will hold all future script files.
+Create a folder named `tasks` inside the `scripts`. This folder will contain all future script files.
 
 ```sh
 mkdir scripts/tasks
 ```
 
-Now create `server.sh` inside this folder:
+Create `server.sh` inside this folder, and copy the below code and save:
 
 ```sh
 http-server -p $PORT
