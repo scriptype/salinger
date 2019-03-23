@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var path = require('path')
-var { tasks: tasksPath } = require('../paths')
+var { tasks: tasksPath } = require('../lib/paths')
 var tasks = require(tasksPath)
 
 var [ task, ...restArguments ] = process.argv.slice(2)
