@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 var path = require('path')
-var configKey = 'npm_package_config_salinger_home'
-var homePath = path.resolve(process.cwd(), process.env[configKey] || 'scripts')
-process.env.SALINGER_HOME_PATH = homePath
-
-var tasks = require(path.join(homePath, 'tasks'))
+var { tasks: tasksPath } = require('../paths')
+var tasks = require(tasksPath)
 
 var [ task, ...restArguments ] = process.argv.slice(2)
 

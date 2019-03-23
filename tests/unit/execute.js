@@ -4,8 +4,6 @@ var path = require('path')
 
 // Take prerequisite actions before requiring 'paths' and 'execute' modules
 var homePath = process.hrtime().join('-')
-process.env.SALINGER_HOME_PATH = homePath
-
 var paths = require('../../lib/paths')
 var execute = require('../../lib/execute')
 
