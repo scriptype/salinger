@@ -1,6 +1,6 @@
 {
   "name": "salinger",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Ecosystem-free and flexible task runner that goes well with npm scripts.",
   "main": "lib/index.js",
   "bin": {
